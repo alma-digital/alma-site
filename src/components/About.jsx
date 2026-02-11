@@ -24,15 +24,16 @@ const About = () => {
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-        <Box sx={{ textAlign: 'center', mb: 8 }}>
-          <Badge variant="default" className="mb-8 text-lg font-bold py-3 px-4">
+      <Container maxWidth="lg" className="max-sm:px-4" sx={{ position: 'relative', zIndex: 1 }}>
+        <Box sx={{ textAlign: 'center', mb: 8 }} className="max-sm:mb-6">
+          <Badge variant="default" className="mb-8 text-lg font-bold py-3 px-4 max-sm:mb-6 max-sm:text-base max-sm:py-2 max-sm:px-3">
             <Lightbulb className="ml-2 h-6 w-6" />
             למה לבחור בי
           </Badge>
           <Typography 
             variant="h2" 
             gutterBottom 
+            className="max-sm:!text-2xl max-sm:leading-tight"
             sx={{ 
               fontWeight: 700,
               fontSize: { xs: '2.8rem', md: '4rem' },
@@ -46,9 +47,9 @@ const About = () => {
           </Typography>
         </Box>
 
-        <Grid container spacing={4} justifyContent="center">
-          <Grid item xs={12} md={10}>
-            <Card className="relative overflow-hidden bg-white border-2 border-[#e2e8f0] text-[#0f172a] shadow-xl hover:-translate-y-2">
+        <Grid container spacing={4} justifyContent="center" className="max-sm:gap-4">
+          <Grid item xs={12} md={10} className="max-sm:w-full">
+            <Card className="relative overflow-hidden bg-white border-2 border-[#e2e8f0] text-[#0f172a] shadow-xl hover:-translate-y-2 max-sm:w-full">
               <Box sx={{ 
                 position: 'absolute',
                 top: 0,
@@ -58,7 +59,7 @@ const About = () => {
                 background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.02) 0%, transparent 100%)',
                 opacity: 1
               }} />
-              <CardContent className="relative z-10 p-8 md:p-12">
+              <CardContent className="relative z-10 p-8 md:p-12 max-sm:p-6">
                 <Avatar 
                   sx={{ 
                     bgcolor: '#3b82f6',
@@ -71,15 +72,15 @@ const About = () => {
                   <Sparkles style={{ fontSize: 40, color: 'white' }} />
                 </Avatar>
 
-                <Typography variant="body1" paragraph sx={{ fontSize: '1.25rem', lineHeight: 1.9, color: '#0f172a', mb: 3 }}>
+                <Typography variant="body1" paragraph sx={{ fontSize: '1.25rem', lineHeight: 1.9, color: '#0f172a', mb: 3 }} className="max-sm:!text-base max-sm:mb-4">
                   אני מגיע מעולם הפיתוח המלא, אבטחת מידע וניהול שרתי ענן.
                 </Typography>
                 
-                <Typography variant="body1" paragraph sx={{ fontSize: '1.25rem', lineHeight: 1.9, color: '#0f172a', mb: 3 }}>
+                <Typography variant="body1" paragraph sx={{ fontSize: '1.25rem', lineHeight: 1.9, color: '#0f172a', mb: 3 }} className="max-sm:!text-base max-sm:mb-4">
                   כל אתר נבנה מהיסוד, בלי תבניות כבדות ובלי קיצורי דרך.
                 </Typography>
                 
-                <Typography variant="body1" sx={{ fontSize: '1.25rem', lineHeight: 1.9, color: '#0f172a' }}>
+                <Typography variant="body1" sx={{ fontSize: '1.25rem', lineHeight: 1.9, color: '#0f172a' }} className="max-sm:!text-base">
                   האתר שלך יהיה מהיר, מאובטח ומוכן לצמיחה עתידית.
                 </Typography>
               </CardContent>

@@ -78,17 +78,18 @@ const Contact = () => {
         background: '#ffffff',
         position: 'relative'
       }}
+      className="max-sm:py-8"
     >
-      <Container maxWidth="lg">
-        <Box sx={{ textAlign: 'center', mb: 8 }}>
-          <Badge variant="secondary" className="mb-8 text-lg font-bold py-3 px-4">
+      <Container maxWidth="lg" className="max-sm:px-4">
+        <Box sx={{ textAlign: 'center', mb: 8 }} className="max-sm:mb-6 max-sm:text-center">
+          <Badge variant="secondary" className="mb-8 text-lg font-bold py-3 px-4 max-sm:mb-6 max-sm:text-base max-sm:py-2 max-sm:px-3">
             <Mail className="ml-2 h-6 w-6" />
             צור קשר
           </Badge>
           <Typography 
             variant="h2" 
             gutterBottom 
-            className="text-shadow-md"
+            className="text-shadow-md max-sm:!text-2xl max-sm:leading-tight"
             sx={{ 
               fontWeight: 700,
               fontSize: { xs: '2.8rem', md: '4rem' },
@@ -103,7 +104,7 @@ const Contact = () => {
           <Typography 
             variant="h5" 
             color="text.secondary" 
-            className="text-shadow-sm"
+            className="text-shadow-sm max-sm:!text-base"
             sx={{ 
               maxWidth: 700, 
               mx: 'auto',
@@ -118,9 +119,9 @@ const Contact = () => {
           </Typography>
         </Box>
 
-        <Grid container spacing={6}>
+        <Grid container spacing={6} className="max-sm:gap-4 max-sm:flex-col">
           {/* Contact Form - IMPROVED */}
-          <Grid item xs={12} md={7}>
+          <Grid item xs={12} md={7} className="max-sm:w-full">
             <Paper 
               elevation={12} 
               sx={{ 
@@ -157,6 +158,7 @@ const Contact = () => {
                 <Typography 
                   variant="h3" 
                   gutterBottom 
+                  className="max-sm:!text-xl"
                   sx={{ 
                     fontWeight: 600, 
                     mb: 2,
@@ -167,7 +169,7 @@ const Contact = () => {
                 >
                   בוא נבנה משהו חזק
                 </Typography>
-                <Typography variant="body1" sx={{ fontSize: '1.1rem', color: '#64748b' }}>
+                <Typography variant="body1" sx={{ fontSize: '1.1rem', color: '#64748b' }} className="max-sm:!text-base">
                   ספר לי על העסק שלך ומה אתה רוצה להשיג -
                   ואחזור אליך עם כיוון ברור להמשך תוך 24 שעות.
                 </Typography>
@@ -175,7 +177,7 @@ const Contact = () => {
 
               <form onSubmit={handleSubmit}>
                 <Grid container spacing={3}>
-                  <Grid item xs={12} sm={6}>
+                  <Grid item xs={12} sm={6} className="max-sm:w-full">
                     <Box>
                       <Typography 
                         variant="subtitle1" 
@@ -185,6 +187,7 @@ const Contact = () => {
                           fontSize: '1.05rem',
                           color: '#0f172a'
                         }}
+                        className="max-sm:!text-base"
                       >
                         👤 שם מלא *
                       </Typography>
@@ -199,7 +202,7 @@ const Contact = () => {
                     </Box>
                   </Grid>
                   
-                  <Grid item xs={12} sm={6}>
+                  <Grid item xs={12} sm={6} className="max-sm:w-full">
                     <Box>
                       <Typography 
                         variant="subtitle1" 
@@ -209,6 +212,7 @@ const Contact = () => {
                           fontSize: '1.05rem',
                           color: '#0f172a'
                         }}
+                        className="max-sm:!text-base"
                       >
                         📱 טלפון *
                       </Typography>
@@ -271,11 +275,11 @@ const Contact = () => {
                     </Box>
                   </Grid>
                   
-                  <Grid item xs={12}>
+                  <Grid item xs={12} className="max-sm:w-full">
                     <Button
                       type="submit"
                       size="lg"
-                      className="w-full h-16 text-xl font-bold shadow-2xl hover:shadow-[0_20px_60px_rgba(59,130,246,0.4)] hover:scale-[1.02] transition-all"
+                      className="w-full h-16 text-xl font-bold shadow-2xl hover:shadow-[0_20px_60px_rgba(59,130,246,0.4)] hover:scale-[1.02] transition-all max-sm:h-14 max-sm:text-base"
                     >
                       <SendIcon className="ml-3" sx={{ fontSize: 28 }} />
                       שלח הודעה עכשיו
@@ -305,8 +309,8 @@ const Contact = () => {
           </Grid>
 
           {/* Contact Info Cards - IMPROVED */}
-          <Grid item xs={12} md={5}>
-            <Stack spacing={4}>
+          <Grid item xs={12} md={5} className="max-sm:w-full">
+            <Stack spacing={4} className="max-sm:gap-4">
               <Box 
                 sx={{ 
                   p: 4,

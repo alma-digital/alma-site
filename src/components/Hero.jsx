@@ -61,17 +61,18 @@ const Hero = () => {
         }
       }}
     >
-      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1, py: 8 }}>
-        <Grid container spacing={8} alignItems="center">
+      <Container maxWidth="lg" className="max-sm:px-4" sx={{ position: 'relative', zIndex: 1, py: 8 }}>
+        <Grid container spacing={8} alignItems="center" className="max-sm:flex-col max-sm:gap-6">
           {/* Content */}
-          <Grid item xs={12} md={6}>
-            <Badge variant="secondary" className="mb-8 text-base font-semibold py-2 px-4">
+          <Grid item xs={12} md={6} className="max-sm:order-2 max-sm:text-center max-sm:w-full">
+            <Badge variant="secondary" className="mb-8 text-base font-semibold py-2 px-4 max-sm:mb-6 max-sm:text-sm max-sm:py-1.5 max-sm:px-3">
               <Sparkles className="ml-2 h-5 w-5" />
               דפי נחיתה לעסקים קטנים
             </Badge>
             
             <Typography 
               variant="h1" 
+              className="max-sm:!text-[1.75rem] max-sm:leading-tight max-sm:mb-3"
               sx={{ 
                 fontSize: { xs: '2.8rem', md: '4rem', lg: '4.5rem' },
                 fontWeight: 800,
@@ -86,6 +87,7 @@ const Hero = () => {
             
             <Typography 
               variant="h5" 
+              className="max-sm:!text-base max-sm:mb-6 max-sm:leading-relaxed"
               sx={{ 
                 color: '#64748b',
                 mb: 5,
@@ -99,11 +101,11 @@ const Hero = () => {
               המטרה ברורה: יותר פניות, יותר אמון, יותר תוצאות.
             </Typography>
             
-            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, mb: 6 }}>
+            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, mb: 6 }} className="max-sm:flex-col max-sm:items-center max-sm:gap-4 max-sm:mb-8">
               <Button 
                 asChild
                 size="lg"
-                className="bg-[#0f172a] text-white hover:bg-[#1e293b] hover:scale-105 shadow-lg hover:shadow-xl text-lg font-bold px-8 py-4 rounded-xl transition-all duration-300"
+                className="bg-[#0f172a] text-white hover:bg-[#1e293b] hover:scale-105 shadow-lg hover:shadow-xl text-lg font-bold px-8 py-4 rounded-xl transition-all duration-300 max-sm:w-full max-sm:justify-center max-sm:text-base max-sm:py-3"
               >
                 <a 
                   href="https://wa.me/972525473560?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%99%D7%99%D7%A2%D7%95%D7%A5"
@@ -115,11 +117,11 @@ const Hero = () => {
                 </a>
               </Button>
               
-              <Link to="services" spy={true} smooth={true} offset={-70} duration={500}>
+              <Link to="services" spy={true} smooth={true} offset={-70} duration={500} className="max-sm:w-full">
                 <Button 
                   variant="outline"
                   size="lg"
-                  className="border-2 border-[#0f172a] text-[#0f172a] hover:bg-[#0f172a]/5 hover:scale-105 text-lg font-bold px-8 py-4 rounded-xl transition-all duration-300"
+                  className="border-2 border-[#0f172a] text-[#0f172a] hover:bg-[#0f172a]/5 hover:scale-105 text-lg font-bold px-8 py-4 rounded-xl transition-all duration-300 max-sm:w-full max-sm:justify-center max-sm:text-base max-sm:py-3"
                 >
                   לצפייה בעבודות
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -129,7 +131,7 @@ const Hero = () => {
           </Grid>
 
           {/* Visual */}
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} className="max-sm:order-1 max-sm:flex max-sm:justify-center max-sm:w-full">
             <Box
               sx={{
                 position: 'relative',
@@ -138,6 +140,7 @@ const Hero = () => {
                 alignItems: 'center',
                 height: '100%'
               }}
+              className="max-sm:w-full max-sm:max-w-[280px]"
             >
               <Box
                 sx={{
@@ -187,6 +190,7 @@ const Hero = () => {
                   <img 
                     src="/logo.png" 
                     alt="Alma Digital" 
+                    className="max-w-full h-auto w-full block"
                     style={{ 
                       width: '100%',
                       height: 'auto',
@@ -202,9 +206,9 @@ const Hero = () => {
         </Grid>
 
         {/* Stats Cards - משודרגים */}
-        <Grid container spacing={3} sx={{ mt: 8 }}>
+        <Grid container spacing={3} sx={{ mt: 8 }} className="max-sm:mt-6 max-sm:gap-4">
           {stats.map((stat, index) => (
-            <Grid item xs={12} sm={4} key={index}>
+            <Grid item xs={12} sm={4} key={index} className="max-sm:w-full">
               <Paper 
                 elevation={0}
                 sx={{ 

@@ -51,11 +51,12 @@ const Footer = () => {
           background: '#3b82f6',
         }
       }}
+      className="max-sm:pt-6 max-sm:pb-4"
     >
-      <Container maxWidth="lg">
-        <Grid container spacing={6}>
+      <Container maxWidth="lg" className="max-sm:px-4">
+        <Grid container spacing={6} className="max-sm:gap-6 max-sm:flex-col max-sm:text-center">
           {/* Brand */}
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={4} className="max-sm:w-full max-sm:flex max-sm:flex-col max-sm:items-center">
             <Box 
               sx={{ 
                 height: 50,
@@ -67,8 +68,10 @@ const Footer = () => {
               <img 
                 src="/logo.png" 
                 alt="Alma Digital" 
+                className="max-w-full h-auto"
                 style={{ 
                   height: '100%',
+                  maxWidth: '100%',
                   filter: 'brightness(0) invert(1) drop-shadow(0 2px 8px rgba(255,255,255,0.3))',
                   cursor: 'pointer'
                 }}
@@ -83,13 +86,14 @@ const Footer = () => {
                 mb: 3,
                 fontSize: '1.05rem'
               }}
+              className="max-sm:!text-base max-sm:mb-4"
             >
               דפי נחיתה מקצועיים לעסקים קטנים.
               <br />
               בונים פתרונות דיגיטליים שמניבים תוצאות אמיתיות.
             </Typography>
             
-            <Stack direction="row" spacing={1}>
+            <Stack direction="row" spacing={1} className="max-sm:justify-center">
               {socialLinks.map((social, index) => (
                 <IconButton
                   key={index}
@@ -114,7 +118,7 @@ const Footer = () => {
           </Grid>
 
           {/* Quick Links */}
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid item xs={12} sm={6} md={4} className="max-sm:w-full max-sm:flex max-sm:flex-col max-sm:items-center">
             <Typography 
               variant="h6" 
               gutterBottom 
@@ -123,6 +127,7 @@ const Footer = () => {
                 mb: 3,
                 fontSize: '1.3rem'
               }}
+              className="max-sm:!text-lg"
             >
               קישורים מהירים
             </Typography>
@@ -160,7 +165,7 @@ const Footer = () => {
           </Grid>
 
           {/* Contact Info */}
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid item xs={12} sm={6} md={4} className="max-sm:w-full max-sm:flex max-sm:flex-col max-sm:items-center">
             <Typography 
               variant="h6" 
               gutterBottom 
@@ -169,6 +174,7 @@ const Footer = () => {
                 mb: 3,
                 fontSize: '1.3rem'
               }}
+              className="max-sm:!text-lg"
             >
               יצירת קשר
             </Typography>
@@ -218,13 +224,14 @@ const Footer = () => {
 
         <Divider sx={{ my: 5, borderColor: 'rgba(255,255,255,0.1)' }} />
 
-        <Box sx={{ textAlign: 'center' }}>
+        <Box sx={{ textAlign: 'center' }} className="max-sm:px-2">
           <Typography 
             variant="body2" 
             sx={{ 
               opacity: 0.7,
               fontSize: '1rem'
             }}
+            className="max-sm:!text-sm"
           >
             © {new Date().getFullYear()} Alma Digital. כל הזכויות שמורות. | עוצב ונבנה באהבה ❤️
           </Typography>

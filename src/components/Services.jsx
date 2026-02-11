@@ -64,16 +64,17 @@ const Services = () => {
   ]
 
   return (
-    <Box id="services" sx={{ py: 12, bgcolor: 'white' }}>
-      <Container maxWidth="lg">
-        <Box sx={{ textAlign: 'center', mb: 8 }}>
-          <Badge variant="secondary" className="mb-8 text-lg font-bold py-3 px-4">
+    <Box id="services" sx={{ py: 12, bgcolor: 'white' }} className="max-sm:py-8">
+      <Container maxWidth="lg" className="max-sm:px-4">
+        <Box sx={{ textAlign: 'center', mb: 8 }} className="max-sm:mb-6 max-sm:text-center">
+          <Badge variant="secondary" className="mb-8 text-lg font-bold py-3 px-4 max-sm:mb-6 max-sm:text-base max-sm:py-2 max-sm:px-3">
             <Briefcase className="ml-2 h-6 w-6" />
             שירותים
           </Badge>
           <Typography 
             variant="h2" 
             gutterBottom 
+            className="max-sm:!text-2xl max-sm:leading-tight"
             sx={{ 
               fontWeight: 700,
               fontSize: { xs: '2.8rem', md: '4rem' },
@@ -87,6 +88,7 @@ const Services = () => {
           </Typography>
           <Typography 
             variant="h5" 
+            className="max-sm:!text-base"
             sx={{ 
               maxWidth: 700, 
               mx: 'auto',
@@ -100,10 +102,10 @@ const Services = () => {
           </Typography>
         </Box>
 
-        <Grid container spacing={4} sx={{ mb: 8 }}>
+        <Grid container spacing={4} sx={{ mb: 8 }} className="max-sm:gap-4 max-sm:mb-6">
           {services.map((service, index) => (
-            <Grid item xs={12} md={4} key={index}>
-              <Card className="h-full text-center p-8 border-2 border-[#e2e8f0] hover:border-[#3b82f6]">
+            <Grid item xs={12} md={4} key={index} className="max-sm:w-full">
+              <Card className="h-full text-center p-8 border-2 border-[#e2e8f0] hover:border-[#3b82f6] max-sm:p-6 max-sm:w-full">
                 <CardContent className="p-0 h-full flex flex-col">
                   <Avatar 
                     sx={{ 
@@ -120,11 +122,11 @@ const Services = () => {
                     </Box>
                   </Avatar>
                   
-                  <Typography variant="h5" gutterBottom sx={{ fontWeight: 700, mb: 2, color: '#0f172a' }}>
+                  <Typography variant="h5" gutterBottom sx={{ fontWeight: 700, mb: 2, color: '#0f172a' }} className="max-sm:!text-lg">
                     {service.title}
                   </Typography>
                   
-                  <Typography variant="body1" sx={{ lineHeight: 1.8, flexGrow: 1, color: '#64748b' }}>
+                  <Typography variant="body1" sx={{ lineHeight: 1.8, flexGrow: 1, color: '#64748b' }} className="max-sm:!text-base">
                     {service.description}
                   </Typography>
                 </CardContent>
@@ -134,9 +136,9 @@ const Services = () => {
         </Grid>
 
         {/* Benefits Bar */}
-        <Grid container spacing={3}>
+        <Grid container spacing={3} className="max-sm:gap-4">
           {benefits.map((benefit, index) => (
-            <Grid item xs={12} md={4} key={index}>
+            <Grid item xs={12} md={4} key={index} className="max-sm:w-full">
               <Card className="text-center py-6 bg-[#0f172a] border-none hover:scale-105 hover:bg-[#1e293b] [&_*]:!text-white">
                 <CardContent>
                   <Box sx={{ fontSize: 50, mb: 1, color: 'white' }}>

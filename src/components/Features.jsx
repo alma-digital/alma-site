@@ -56,10 +56,12 @@ const Features = () => {
           mb: 10,
           textAlign: 'center'
         }}
+        className="max-sm:py-5 max-sm:mb-8"
       >
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" className="max-sm:px-4">
           <Typography 
             variant="h2" 
+            className="max-sm:!text-2xl max-sm:leading-tight"
             sx={{ 
               color: 'white',
               fontWeight: 900,
@@ -73,10 +75,10 @@ const Features = () => {
       </Box>
 
       {/* Features Grid */}
-      <Container maxWidth="lg">
-        <Grid container spacing={{ xs: 4, md: 5 }} justifyContent="center">
+      <Container maxWidth="lg" className="max-sm:px-4">
+        <Grid container spacing={{ xs: 4, md: 5 }} justifyContent="center" className="max-sm:gap-4">
           {features.map((feature, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
+            <Grid item xs={12} sm={6} md={4} key={index} className="max-sm:w-full">
               <Box
                 sx={{
                   display: 'flex',
@@ -111,6 +113,7 @@ const Features = () => {
                 </Box>
                 <Typography
                   variant="body1"
+                  className="max-sm:!text-base"
                   sx={{
                     color: '#0f172a',
                     fontSize: '1.1rem',

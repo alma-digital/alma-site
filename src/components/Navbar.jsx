@@ -50,8 +50,8 @@ const Navbar = () => {
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
         }}
       >
-        <Container maxWidth="lg">
-          <Toolbar disableGutters sx={{ py: 1.5, minHeight: { xs: 64, md: 70 } }}>
+        <Container maxWidth="lg" className="max-sm:px-4">
+          <Toolbar disableGutters sx={{ py: 1.5, minHeight: { xs: 64, md: 70 } }} className="max-sm:min-h-[56px]">
               {/* Logo - Removed */}
               <Box sx={{ flexGrow: 1 }} />
 
@@ -151,7 +151,7 @@ const Navbar = () => {
               </Box>
             </Box>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button (Hamburger) - visible only on mobile */}
             <IconButton
               sx={{ 
                 display: { xs: 'flex', md: 'none' },
@@ -283,7 +283,7 @@ const Navbar = () => {
         </Box>
       </Drawer>
 
-      <Toolbar sx={{ minHeight: { xs: 64, md: 70 } }} />
+      <Toolbar sx={{ minHeight: { xs: 64, md: 70 } }} className="max-sm:min-h-[56px]" />
     </>
   )
 }

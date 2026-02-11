@@ -30,12 +30,12 @@ const StickyCtaBar = () => {
       style={{ pointerEvents: isVisible ? 'auto' : 'none' }}
     >
       {/* Changed: White background → Midnight Blue gradient with stronger presence */}
-      <div className="bg-gradient-to-l from-[#0f172a] via-[#1e293b] to-[#0f172a] border-t-4 border-[#3b82f6] shadow-2xl">
-        <div className="container mx-auto px-4 py-5">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
+      <div className="bg-gradient-to-l from-[#0f172a] via-[#1e293b] to-[#0f172a] border-t-4 border-[#3b82f6] shadow-2xl max-w-[100vw] overflow-x-hidden">
+        <div className="container mx-auto px-4 py-5 max-sm:px-4 max-sm:py-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 max-sm:gap-4 max-sm:items-stretch max-sm:text-center">
             {/* Text - Enhanced typography */}
-            <div className="text-center sm:text-right">
-              <p className="text-white font-bold text-lg sm:text-xl leading-relaxed">
+            <div className="text-center sm:text-right max-sm:w-full">
+              <p className="text-white font-bold text-lg sm:text-xl leading-relaxed max-sm:text-base">
                 לא בטוחים עוד? צרו קשר ונדבר עוד היום
               </p>
             </div>
@@ -44,7 +44,7 @@ const StickyCtaBar = () => {
             <Button
               asChild
               size="lg"
-              className="bg-[#25D366] hover:bg-[#1ea952] text-white font-bold text-lg sm:text-xl px-8 py-5 rounded-xl shadow-[0_6px_24px_rgba(37,211,102,0.35)] hover:shadow-[0_10px_32px_rgba(37,211,102,0.5)] hover:-translate-y-1 active:translate-y-0 transition-all duration-200 whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2"
+              className="bg-[#25D366] hover:bg-[#1ea952] text-white font-bold text-lg sm:text-xl px-8 py-5 rounded-xl shadow-[0_6px_24px_rgba(37,211,102,0.35)] hover:shadow-[0_10px_32px_rgba(37,211,102,0.5)] hover:-translate-y-1 active:translate-y-0 transition-all duration-200 whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 max-sm:w-full max-sm:justify-center max-sm:py-4 max-sm:text-base"
             >
               <a
                 href="https://wa.me/972525473560?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%99%D7%99%D7%A2%D7%95%D7%A5%20%D7%A2%D7%9C%20%D7%93%D7%A3%20%D7%A0%D7%97%D7%99%D7%AA%D7%94"

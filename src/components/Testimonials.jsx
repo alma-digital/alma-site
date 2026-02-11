@@ -100,13 +100,14 @@ const Testimonials = () => {
   ]
 
   return (
-    <Box sx={{ py: 12, bgcolor: '#f8fafc' }}>
-      <Container maxWidth="lg">
+    <Box sx={{ py: 12, bgcolor: '#f8fafc' }} className="max-sm:py-8">
+      <Container maxWidth="lg" className="max-sm:px-4">
         {/* Header */}
-        <Box sx={{ textAlign: 'center', mb: 10 }}>
+        <Box sx={{ textAlign: 'center', mb: 10 }} className="max-sm:mb-6 max-sm:text-center">
           <Typography 
             variant="h2" 
             gutterBottom 
+            className="max-sm:!text-2xl max-sm:leading-tight"
             sx={{ 
               fontWeight: 700,
               fontSize: { xs: '2.8rem', md: '4rem' },
@@ -120,6 +121,7 @@ const Testimonials = () => {
           </Typography>
           <Typography 
             variant="h5" 
+            className="max-sm:!text-base"
             sx={{ 
               maxWidth: 800, 
               mx: 'auto',
@@ -187,12 +189,12 @@ const Testimonials = () => {
           </Box>
 
           {/* Embla Carousel - Added padding-top to prevent Quote icon clipping */}
-          <div className="overflow-hidden pt-6" ref={emblaRef}>
+          <div className="overflow-hidden pt-6 max-sm:overflow-x-hidden max-sm:max-w-[100vw]" ref={emblaRef}>
             <div className="flex" style={{ direction: 'rtl' }}>
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className="flex-[0_0_100%] min-w-0 px-3 md:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
+                  className="flex-[0_0_100%] min-w-0 px-3 max-sm:px-4 md:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
                   style={{ direction: 'rtl' }}
                 >
                   <Card 
@@ -246,10 +248,11 @@ const Testimonials = () => {
                       <Quote style={{ color: 'white', fontSize: 24 }} />
                     </Box>
 
-                    <CardContent className="p-10 pt-14 flex flex-col h-full">
+                    <CardContent className="p-10 pt-14 flex flex-col h-full max-sm:p-6 max-sm:pt-12">
                       {/* Feedback Text */}
                       <Typography
                         variant="body1"
+                        className="max-sm:!text-base"
                         sx={{
                           fontSize: '1.15rem',
                           lineHeight: 1.8,
@@ -318,6 +321,7 @@ const Testimonials = () => {
               background: 'linear-gradient(90deg, #60a5fa, #3b82f6, #2563eb)',
             }
           }}
+          className="max-sm:mt-6 max-sm:p-6 max-sm:mx-0"
         >
           <Typography 
             variant="h5" 
@@ -350,7 +354,7 @@ const Testimonials = () => {
           <Button
             asChild
             size="lg"
-            className="bg-white hover:bg-gray-50 text-[#3b82f6] font-bold text-lg sm:text-xl px-10 py-6 rounded-xl shadow-[0_8px_30px_rgba(255,255,255,0.3)] hover:shadow-[0_12px_40px_rgba(255,255,255,0.45)] hover:-translate-y-1 active:translate-y-0 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#3b82f6]"
+            className="bg-white hover:bg-gray-50 text-[#3b82f6] font-bold text-lg sm:text-xl px-10 py-6 rounded-xl shadow-[0_8px_30px_rgba(255,255,255,0.3)] hover:shadow-[0_12px_40px_rgba(255,255,255,0.45)] hover:-translate-y-1 active:translate-y-0 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#3b82f6] max-sm:w-full max-sm:py-4 max-sm:text-base"
           >
             <a
               href="https://wa.me/972525473560?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%A4%D7%99%D7%93%D7%91%D7%A7%D7%99%D7%9D%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%93%D7%91%D7%A8%20%D7%A2%D7%9C%20%D7%93%D7%A3%20%D7%A0%D7%97%D7%99%D7%AA%D7%94"
