@@ -81,7 +81,7 @@ const Hero = () => {
                 letterSpacing: '-0.03em'
               }}
             >
-              אתרי תדמית ודפי נחיתה שמביאים לקוחות.
+              דפי נחיתה בלבד שמביאים לקוחות.
             </Typography>
             
             <Typography 
