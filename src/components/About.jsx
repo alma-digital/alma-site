@@ -11,7 +11,7 @@ import { Card, CardContent } from './ui/card'
 
 const About = () => {
   return (
-    <Box id="about" sx={{ py: 12, bgcolor: '#ffffff', position: 'relative', overflow: 'hidden' }}>
+    <Box id="about" sx={{ py: 12, bgcolor: '#ffffff', position: 'relative', overflow: 'hidden' }} className="max-sm:py-8">
       <Box
         sx={{
           position: 'absolute',
@@ -25,8 +25,8 @@ const About = () => {
       />
 
       <Container maxWidth="lg" className="max-sm:px-4" sx={{ position: 'relative', zIndex: 1 }}>
-        <Box sx={{ textAlign: 'center', mb: 8 }} className="max-sm:mb-6">
-          <Badge variant="default" className="mb-8 text-lg font-bold py-3 px-4 max-sm:mb-6 max-sm:text-base max-sm:py-2 max-sm:px-3">
+        <Box sx={{ textAlign: 'center', mb: 8 }} className="max-sm:mb-5">
+          <Badge variant="default" className="mb-8 text-lg font-bold py-3 px-4 max-sm:mb-4 max-sm:text-base max-sm:py-2 max-sm:px-3">
             <Lightbulb className="ml-2 h-6 w-6" />
             למה לבחור בי
           </Badge>
@@ -59,7 +59,7 @@ const About = () => {
                 background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.02) 0%, transparent 100%)',
                 opacity: 1
               }} />
-              <CardContent className="relative z-10 p-8 md:p-12 max-sm:p-6">
+              <CardContent className="relative z-10 p-8 md:p-12 max-sm:p-5">
                 <Avatar 
                   sx={{ 
                     bgcolor: '#3b82f6',

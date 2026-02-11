@@ -100,10 +100,10 @@ const Testimonials = () => {
   ]
 
   return (
-    <Box sx={{ py: 12, bgcolor: '#f8fafc' }} className="max-sm:py-8">
+    <Box sx={{ py: 12, bgcolor: '#f8fafc' }} className="max-sm:py-6">
       <Container maxWidth="lg" className="max-sm:px-4">
         {/* Header */}
-        <Box sx={{ textAlign: 'center', mb: 10 }} className="max-sm:mb-6 max-sm:text-center">
+        <Box sx={{ textAlign: 'center', mb: 10 }} className="max-sm:mb-5 max-sm:text-center">
           <Typography 
             variant="h2" 
             gutterBottom 
@@ -321,7 +321,7 @@ const Testimonials = () => {
               background: 'linear-gradient(90deg, #60a5fa, #3b82f6, #2563eb)',
             }
           }}
-          className="max-sm:mt-6 max-sm:p-6 max-sm:mx-0"
+          className="max-sm:mt-5 max-sm:p-5 max-sm:mx-0"
         >
           <Typography 
             variant="h5" 

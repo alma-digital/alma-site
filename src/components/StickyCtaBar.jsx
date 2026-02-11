@@ -2,36 +2,56 @@ import { useState, useEffect } from 'react'
 import { Button } from './ui/button'
 import { MessageCircle } from 'lucide-react'
 
+const MOBILE_BREAKPOINT = 640
+
 const StickyCtaBar = () => {
   const [isVisible, setIsVisible] = useState(false)
+  const [isMobile, setIsMobile] = useState(() => 
+    typeof window !== 'undefined' && window.innerWidth < MOBILE_BREAKPOINT
+  )
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show bar after scrolling 200px
-      if (window.scrollY > 200) {
+      // On mobile: always show. On desktop: show after 200px scroll
+      if (window.innerWidth < MOBILE_BREAKPOINT) {
+        setIsVisible(true)
+      } else if (window.scrollY > 200) {
         setIsVisible(true)
       } else {
         setIsVisible(false)
       }
     }
-
-    // Add scroll listener
+    handleScroll()
     window.addEventListener('scroll', handleScroll)
-
-    // Cleanup
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const showBar = isMobile || isVisible
 
   return (
     <div
       className={`fixed bottom-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
+        showBar ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
       }`}
-      style={{ pointerEvents: isVisible ? 'auto' : 'none' }}
+      style={{ 
+        pointerEvents: showBar ? 'auto' : 'none'
+      }}
     >
-      {/* Changed: White background → Midnight Blue gradient with stronger presence */}
-      <div className="bg-gradient-to-l from-[#0f172a] via-[#1e293b] to-[#0f172a] border-t-4 border-[#3b82f6] shadow-2xl max-w-[100vw] overflow-x-hidden">
-        <div className="container mx-auto px-4 py-5 max-sm:px-4 max-sm:py-4">
+      {/* Mobile: always visible + safe-area; Desktop: show after scroll */}
+      <div 
+        className="bg-gradient-to-l from-[#0f172a] via-[#1e293b] to-[#0f172a] border-t-4 border-[#3b82f6] shadow-2xl max-w-[100vw] overflow-x-hidden"
+        style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
+      >
+        <div className="container mx-auto px-4 py-5 max-sm:px-4 max-sm:py-3">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 max-sm:gap-4 max-sm:items-stretch max-sm:text-center">
             {/* Text - Enhanced typography */}
             <div className="text-center sm:text-right max-sm:w-full">

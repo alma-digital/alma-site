@@ -48,10 +48,10 @@ const Process = () => {
   ]
 
   return (
-    <Box id="process" sx={{ py: 12, bgcolor: '#ffffff', position: 'relative', overflow: 'hidden' }} className="max-sm:py-8">
+    <Box id="process" sx={{ py: 12, bgcolor: '#ffffff', position: 'relative', overflow: 'hidden' }} className="max-sm:py-6">
       <Container maxWidth="lg" className="max-sm:px-4">
-        <Box sx={{ textAlign: 'center', mb: 10 }} className="max-sm:mb-6 max-sm:text-center">
-          <Badge variant="default" className="mb-8 text-lg font-bold py-3 px-4 max-sm:mb-6 max-sm:text-base max-sm:py-2 max-sm:px-3">
+        <Box sx={{ textAlign: 'center', mb: 10 }} className="max-sm:mb-5 max-sm:text-center">
+          <Badge variant="default" className="mb-8 text-lg font-bold py-3 px-4 max-sm:mb-4 max-sm:text-base max-sm:py-2 max-sm:px-3">
             <Workflow className="ml-2 h-6 w-6" />
             התהליך
           </Badge>
@@ -87,7 +87,7 @@ const Process = () => {
         </Box>
 
         <Box sx={{ maxWidth: 900, mx: 'auto' }} className="max-sm:w-full">
-          <Stack spacing={4} className="max-sm:gap-4">
+          <Stack spacing={4} className="max-sm:gap-3">
             {steps.map((step, index) => (
               <Card
                 key={index}
@@ -107,7 +107,7 @@ const Process = () => {
                   transition: 'opacity 0.3s',
                   pointerEvents: 'none'
                 }} className="hover:opacity-100" />
-                <CardContent className="p-8 relative z-10 max-sm:p-6">
+                <CardContent className="p-8 relative z-10 max-sm:p-5">
                   <Box sx={{ display: 'flex', gap: 3, alignItems: 'flex-start' }} className="max-sm:flex-col max-sm:items-center max-sm:text-center">
                     <Avatar
                       sx={{
@@ -143,8 +143,8 @@ const Process = () => {
             ))}
           </Stack>
 
-          <Card className="mt-12 bg-[#0f172a] border-none [&_*]:!text-white">
-            <CardContent className="p-6 text-center">
+          <Card className="mt-12 bg-[#0f172a] border-none [&_*]:!text-white max-sm:mt-6">
+            <CardContent className="p-6 text-center max-sm:!p-4">
               <Typography variant="h6" sx={{ fontWeight: 600, color: 'white !important' }}>
                 ✨ תהליך פשוט, ברור ויעיל - בלי כאב ראש
               </Typography>

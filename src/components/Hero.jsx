@@ -42,8 +42,9 @@ const Hero = () => {
   return (
     <Box
       id="home"
+      className="max-sm:min-h-[60vh] sm:min-h-screen"
       sx={{
-        minHeight: '100vh',
+        minHeight: { xs: '60vh', sm: '100vh' },
         display: 'flex',
         alignItems: 'center',
         position: 'relative',
@@ -61,18 +62,18 @@ const Hero = () => {
         }
       }}
     >
-      <Container maxWidth="lg" className="max-sm:px-4" sx={{ position: 'relative', zIndex: 1, py: 8 }}>
-        <Grid container spacing={8} alignItems="center" className="max-sm:flex-col max-sm:gap-6">
+      <Container maxWidth="lg" className="max-sm:px-4 max-sm:py-6 sm:py-8" sx={{ position: 'relative', zIndex: 1, py: 8 }}>
+        <Grid container spacing={8} alignItems="center" className="max-sm:flex-col max-sm:gap-4 sm:gap-8">
           {/* Content */}
           <Grid item xs={12} md={6} className="max-sm:order-2 max-sm:text-center max-sm:w-full">
-            <Badge variant="secondary" className="mb-8 text-base font-semibold py-2 px-4 max-sm:mb-6 max-sm:text-sm max-sm:py-1.5 max-sm:px-3">
+            <Badge variant="secondary" className="mb-8 text-base font-semibold py-2 px-4 max-sm:mb-4 max-sm:text-sm max-sm:py-1.5 max-sm:px-3">
               <Sparkles className="ml-2 h-5 w-5" />
               דפי נחיתה לעסקים קטנים
             </Badge>
             
             <Typography 
               variant="h1" 
-              className="max-sm:!text-[1.75rem] max-sm:leading-tight max-sm:mb-3"
+              className="max-sm:!text-3xl sm:!text-5xl max-sm:leading-tight max-sm:mb-2"
               sx={{ 
                 fontSize: { xs: '2.8rem', md: '4rem', lg: '4.5rem' },
                 fontWeight: 800,
@@ -87,7 +88,7 @@ const Hero = () => {
             
             <Typography 
               variant="h5" 
-              className="max-sm:!text-base max-sm:mb-6 max-sm:leading-relaxed"
+              className="max-sm:!text-base sm:!text-lg max-sm:mb-4 max-sm:leading-relaxed"
               sx={{ 
                 color: '#64748b',
                 mb: 5,
@@ -101,7 +102,7 @@ const Hero = () => {
               המטרה ברורה: יותר פניות, יותר אמון, יותר תוצאות.
             </Typography>
             
-            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, mb: 6 }} className="max-sm:flex-col max-sm:items-center max-sm:gap-4 max-sm:mb-8">
+            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, mb: 6 }} className="max-sm:flex-col max-sm:items-center max-sm:gap-3 max-sm:mb-5">
               <Button 
                 asChild
                 size="lg"
@@ -127,6 +128,15 @@ const Hero = () => {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
+              <Link to="contact" spy={true} smooth={true} offset={-70} duration={500} className="max-sm:w-full sm:hidden">
+                <Button 
+                  variant="ghost"
+                  size="lg"
+                  className="text-[#3b82f6] hover:bg-[#3b82f6]/10 text-base font-semibold py-3 max-sm:w-full max-sm:justify-center"
+                >
+                  לדבר עכשיו →
+                </Button>
+              </Link>
             </Box>
           </Grid>
 
@@ -140,7 +150,7 @@ const Hero = () => {
                 alignItems: 'center',
                 height: '100%'
               }}
-              className="max-sm:w-full max-sm:max-w-[280px]"
+              className="max-sm:w-full max-sm:max-w-[260px] sm:max-w-[420px]"
             >
               <Box
                 sx={{
@@ -206,7 +216,7 @@ const Hero = () => {
         </Grid>
 
         {/* Stats Cards - משודרגים */}
-        <Grid container spacing={3} sx={{ mt: 8 }} className="max-sm:mt-6 max-sm:gap-4">
+        <Grid container spacing={3} sx={{ mt: 8 }} className="max-sm:mt-5 max-sm:gap-4">
           {stats.map((stat, index) => (
             <Grid item xs={12} sm={4} key={index} className="max-sm:w-full">
               <Paper 
@@ -234,7 +244,7 @@ const Hero = () => {
                   }
                 }}
               >
-                <CardContent sx={{ py: 4, px: 3, textAlign: 'center' }}>
+                <CardContent sx={{ py: 4, px: 3, textAlign: 'center' }} className="max-sm:!py-4 max-sm:!px-4">
                   {/* Icon */}
                   <Box
                     sx={{
@@ -250,6 +260,7 @@ const Hero = () => {
                       boxShadow: `0 10px 30px ${stat.color === '#3b82f6' ? 'rgba(59, 130, 246, 0.3)' : 'rgba(15, 23, 42, 0.2)'}`,
                       color: 'white'
                     }}
+                    className="max-sm:!w-14 max-sm:!h-14 max-sm:!mb-2"
                   >
                     {stat.icon}
                   </Box>
@@ -263,6 +274,7 @@ const Hero = () => {
                       mb: 1.5,
                       fontSize: { xs: '2.5rem', md: '3rem' }
                     }}
+                    className="max-sm:!text-2xl max-sm:!mb-1"
                   >
                     {stat.number}
                   </Typography>
@@ -275,12 +287,13 @@ const Hero = () => {
                       fontWeight: 600,
                       fontSize: '1.1rem'
                     }}
+                    className="max-sm:!text-sm"
                   >
                     {stat.label}
                   </Typography>
 
                   {/* Decorative stars */}
-                  <Box sx={{ mt: 2, display: 'flex', justifyContent: 'center', gap: 0.5 }}>
+                  <Box sx={{ mt: 2, display: 'flex', justifyContent: 'center', gap: 0.5 }} className="max-sm:!mt-1">
                     {[1, 2, 3, 4, 5].map((starNum) => (
                       <Star 
                         key={starNum} 

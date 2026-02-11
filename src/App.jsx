@@ -25,7 +25,7 @@ function App() {
   }, [])
 
   return (
-    <div className="overflow-x-hidden max-w-[100vw]" style={{ paddingBottom: '80px' }}>
+    <div className="overflow-x-hidden max-w-[100vw] max-sm:pb-24 sm:pb-20">
       <Navbar />
       <Hero />
       <Features />

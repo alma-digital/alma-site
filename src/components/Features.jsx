@@ -47,7 +47,7 @@ const Features = () => {
   ]
 
   return (
-    <Box sx={{ py: 10, bgcolor: '#ffffff' }}>
+    <Box sx={{ py: 10, bgcolor: '#ffffff' }} className="max-sm:py-6">
       {/* Header Bar */}
       <Box 
         sx={{ 
@@ -56,7 +56,7 @@ const Features = () => {
           mb: 10,
           textAlign: 'center'
         }}
-        className="max-sm:py-5 max-sm:mb-8"
+        className="max-sm:py-4 max-sm:mb-6"
       >
         <Container maxWidth="lg" className="max-sm:px-4">
           <Typography 

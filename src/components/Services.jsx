@@ -64,9 +64,9 @@ const Services = () => {
   ]
 
   return (
-    <Box id="services" sx={{ py: 12, bgcolor: 'white' }} className="max-sm:py-8">
+    <Box id="services" sx={{ py: 12, bgcolor: 'white' }} className="max-sm:py-6">
       <Container maxWidth="lg" className="max-sm:px-4">
-        <Box sx={{ textAlign: 'center', mb: 8 }} className="max-sm:mb-6 max-sm:text-center">
+        <Box sx={{ textAlign: 'center', mb: 8 }} className="max-sm:mb-5 max-sm:text-center">
           <Badge variant="secondary" className="mb-8 text-lg font-bold py-3 px-4 max-sm:mb-6 max-sm:text-base max-sm:py-2 max-sm:px-3">
             <Briefcase className="ml-2 h-6 w-6" />
             שירותים
@@ -102,10 +102,10 @@ const Services = () => {
           </Typography>
         </Box>
 
-        <Grid container spacing={4} sx={{ mb: 8 }} className="max-sm:gap-4 max-sm:mb-6">
+        <Grid container spacing={4} sx={{ mb: 8 }} className="max-sm:gap-4 max-sm:mb-5">
           {services.map((service, index) => (
             <Grid item xs={12} md={4} key={index} className="max-sm:w-full">
-              <Card className="h-full text-center p-8 border-2 border-[#e2e8f0] hover:border-[#3b82f6] max-sm:p-6 max-sm:w-full">
+              <Card className="h-full text-center p-8 border-2 border-[#e2e8f0] hover:border-[#3b82f6] max-sm:p-5 max-sm:w-full">
                 <CardContent className="p-0 h-full flex flex-col">
                   <Avatar 
                     sx={{ 
@@ -139,7 +139,7 @@ const Services = () => {
         <Grid container spacing={3} className="max-sm:gap-4">
           {benefits.map((benefit, index) => (
             <Grid item xs={12} md={4} key={index} className="max-sm:w-full">
-              <Card className="text-center py-6 bg-[#0f172a] border-none hover:scale-105 hover:bg-[#1e293b] [&_*]:!text-white">
+              <Card className="text-center py-6 bg-[#0f172a] border-none hover:scale-105 hover:bg-[#1e293b] [&_*]:!text-white max-sm:py-4">
                 <CardContent>
                   <Box sx={{ fontSize: 50, mb: 1, color: 'white' }}>
                     {benefit.icon}
