@@ -248,11 +248,11 @@ const Testimonials = () => {
                       <Quote style={{ color: 'white', fontSize: 24 }} />
                     </Box>
 
-                    <CardContent className="p-10 pt-14 flex flex-col h-full max-sm:p-6 max-sm:pt-12">
+                    <CardContent className="mobile-testimonial-card p-10 pt-14 flex flex-col h-full max-sm:p-6 max-sm:pt-12">
                       {/* Feedback Text */}
                       <Typography
                         variant="body1"
-                        className="max-sm:!text-base"
+                        className="mobile-testimonial-text max-sm:!text-base"
                         sx={{
                           fontSize: '1.15rem',
                           lineHeight: 1.8,

@@ -11,7 +11,7 @@ import { Card, CardContent } from './ui/card'
 
 const About = () => {
   return (
-    <Box id="about" sx={{ py: 12, bgcolor: '#ffffff', position: 'relative', overflow: 'hidden' }} className="max-sm:py-8">
+    <Box id="about" sx={{ py: 12, bgcolor: '#ffffff', position: 'relative', overflow: 'hidden' }} className="max-sm:py-8 mobile-animate-in">
       <Box
         sx={{
           position: 'absolute',
@@ -24,7 +24,7 @@ const About = () => {
         }}
       />
 
-      <Container maxWidth="lg" className="max-sm:px-4" sx={{ position: 'relative', zIndex: 1 }}>
+      <Container maxWidth="lg" className="mobile-container max-sm:px-4" sx={{ position: 'relative', zIndex: 1 }}>
         <Box sx={{ textAlign: 'center', mb: 8 }} className="max-sm:mb-5">
           <Badge variant="default" className="mb-8 text-lg font-bold py-3 px-4 max-sm:mb-4 max-sm:text-base max-sm:py-2 max-sm:px-3">
             <Lightbulb className="ml-2 h-6 w-6" />

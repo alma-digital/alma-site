@@ -51,9 +51,9 @@ const Footer = () => {
           background: '#3b82f6',
         }
       }}
-      className="max-sm:pt-5 max-sm:pb-4"
+      className="mobile-footer-compact max-sm:pt-5 max-sm:pb-4"
     >
-      <Container maxWidth="lg" className="max-sm:px-4">
+      <Container maxWidth="lg" className="mobile-container max-sm:px-4">
         <Grid container spacing={6} className="max-sm:gap-6 max-sm:flex-col max-sm:text-center">
           {/* Brand */}
           <Grid item xs={12} md={4} className="max-sm:w-full max-sm:flex max-sm:flex-col max-sm:items-center">
@@ -131,7 +131,7 @@ const Footer = () => {
             >
               קישורים מהירים
             </Typography>
-            <Stack spacing={1.5}>
+            <Stack spacing={1.5} className="mobile-footer-links">
               {links.map((link, index) => (
                 <Link 
                   key={index}
@@ -231,7 +231,7 @@ const Footer = () => {
               opacity: 0.7,
               fontSize: '1rem'
             }}
-            className="max-sm:!text-sm"
+            className="mobile-footer-copy max-sm:!text-sm"
           >
             © {new Date().getFullYear()} Alma Digital. כל הזכויות שמורות. | עוצב ונבנה באהבה ❤️
           </Typography>

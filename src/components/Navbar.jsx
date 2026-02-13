@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   AppBar,
   Toolbar,
@@ -26,6 +26,14 @@ import { Link } from 'react-scroll'
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false)
+  useEffect(() => {
+    if (drawerOpen && window.innerWidth <= 767) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [drawerOpen])
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 50,
@@ -51,7 +59,7 @@ const Navbar = () => {
         }}
       >
         <Container maxWidth="lg" className="max-sm:px-4">
-          <Toolbar disableGutters sx={{ py: 1.5, minHeight: { xs: 64, md: 70 } }} className="max-sm:min-h-[56px]">
+          <Toolbar disableGutters sx={{ py: 1.5, minHeight: { xs: 64, md: 70 } }} className="mobile-navbar-wrap max-sm:min-h-[56px]">
               {/* Logo - Removed */}
               <Box sx={{ flexGrow: 1 }} />
 

@@ -42,7 +42,7 @@ const Hero = () => {
   return (
     <Box
       id="home"
-      className="max-sm:min-h-[60vh] sm:min-h-screen"
+      className="mobile-hero-section max-sm:min-h-[60vh] sm:min-h-screen"
       sx={{
         minHeight: { xs: '60vh', sm: '100vh' },
         display: 'flex',
@@ -62,18 +62,18 @@ const Hero = () => {
         }
       }}
     >
-      <Container maxWidth="lg" className="max-sm:px-4 max-sm:py-6 sm:py-8" sx={{ position: 'relative', zIndex: 1, py: 8 }}>
+      <Container maxWidth="lg" className="mobile-container max-sm:px-4 max-sm:py-6 sm:py-8" sx={{ position: 'relative', zIndex: 1, py: 8 }}>
         <Grid container spacing={8} alignItems="center" className="max-sm:flex-col max-sm:gap-4 sm:gap-8">
           {/* Content */}
-          <Grid item xs={12} md={6} className="max-sm:order-2 max-sm:text-center max-sm:w-full">
-            <Badge variant="secondary" className="mb-8 text-base font-semibold py-2 px-4 max-sm:mb-4 max-sm:text-sm max-sm:py-1.5 max-sm:px-3">
+          <Grid item xs={12} md={6} className="max-sm:order-2 max-sm:text-center max-sm:w-full mobile-animate-in">
+            <Badge variant="secondary" className="mobile-hero-badge mb-8 text-base font-semibold py-2 px-4 max-sm:mb-4 max-sm:text-sm max-sm:py-1.5 max-sm:px-3">
               <Sparkles className="ml-2 h-5 w-5" />
               דפי נחיתה לעסקים קטנים
             </Badge>
             
             <Typography 
               variant="h1" 
-              className="max-sm:!text-3xl sm:!text-5xl max-sm:leading-tight max-sm:mb-2"
+              className="mobile-h1 max-sm:!text-3xl sm:!text-5xl max-sm:leading-tight max-sm:mb-2"
               sx={{ 
                 fontSize: { xs: '2.8rem', md: '4rem', lg: '4.5rem' },
                 fontWeight: 800,
@@ -88,7 +88,7 @@ const Hero = () => {
             
             <Typography 
               variant="h5" 
-              className="max-sm:!text-base sm:!text-lg max-sm:mb-4 max-sm:leading-relaxed"
+              className="mobile-hero-subline max-sm:!text-base sm:!text-lg max-sm:mb-4 max-sm:leading-relaxed"
               sx={{ 
                 color: '#64748b',
                 mb: 5,
@@ -102,11 +102,11 @@ const Hero = () => {
               המטרה ברורה: יותר פניות, יותר אמון, יותר תוצאות.
             </Typography>
             
-            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, mb: 6 }} className="max-sm:flex-col max-sm:items-center max-sm:gap-3 max-sm:mb-5">
+            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, mb: 6 }} className="mobile-hero-buttons max-sm:flex-col max-sm:items-center max-sm:gap-3 max-sm:mb-5">
               <Button 
                 asChild
                 size="lg"
-                className="bg-[#0f172a] text-white hover:bg-[#1e293b] hover:scale-105 shadow-lg hover:shadow-xl text-lg font-bold px-8 py-4 rounded-xl transition-all duration-300 max-sm:w-full max-sm:justify-center max-sm:text-base max-sm:py-3"
+                className="mobile-btn-block bg-[#0f172a] text-white hover:bg-[#1e293b] hover:scale-105 shadow-lg hover:shadow-xl text-lg font-bold px-8 py-4 rounded-xl transition-all duration-300 max-sm:w-full max-sm:justify-center max-sm:text-base max-sm:py-3"
               >
                 <a 
                   href="https://wa.me/972525473560?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%99%D7%99%D7%A2%D7%95%D7%A5"
@@ -122,7 +122,7 @@ const Hero = () => {
                 <Button 
                   variant="outline"
                   size="lg"
-                  className="border-2 border-[#0f172a] text-[#0f172a] hover:bg-[#0f172a]/5 hover:scale-105 text-lg font-bold px-8 py-4 rounded-xl transition-all duration-300 max-sm:w-full max-sm:justify-center max-sm:text-base max-sm:py-3"
+                  className="mobile-btn-block border-2 border-[#0f172a] text-[#0f172a] hover:bg-[#0f172a]/5 hover:scale-105 text-lg font-bold px-8 py-4 rounded-xl transition-all duration-300 max-sm:w-full max-sm:justify-center max-sm:text-base max-sm:py-3"
                 >
                   לצפייה בעבודות
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -132,11 +132,16 @@ const Hero = () => {
                 <Button 
                   variant="ghost"
                   size="lg"
-                  className="text-[#3b82f6] hover:bg-[#3b82f6]/10 text-base font-semibold py-3 max-sm:w-full max-sm:justify-center"
+                  className="mobile-btn-block text-[#3b82f6] hover:bg-[#3b82f6]/10 text-base font-semibold py-3 max-sm:w-full max-sm:justify-center"
                 >
                   לדבר עכשיו →
                 </Button>
               </Link>
+              <div className="mobile-trust-row mobile-only">
+                <span>✓ קוד נקי</span>
+                <span>✓ תמיכה</span>
+                <span>✓ תוצאות</span>
+              </div>
             </Box>
           </Grid>
 
@@ -215,10 +220,10 @@ const Hero = () => {
           </Grid>
         </Grid>
 
-        {/* Stats Cards - משודרגים */}
-        <Grid container spacing={3} sx={{ mt: 8 }} className="max-sm:mt-5 max-sm:gap-4">
+        {/* Stats Cards - משודרגים; מובייל: carousel אופקי */}
+        <Grid container spacing={3} sx={{ mt: 8 }} className="mobile-stats-carousel max-sm:mt-5 max-sm:gap-4">
           {stats.map((stat, index) => (
-            <Grid item xs={12} sm={4} key={index} className="max-sm:w-full">
+            <Grid item xs={12} sm={4} key={index} className="mobile-stats-slide max-sm:w-full">
               <Paper 
                 elevation={0}
                 sx={{ 

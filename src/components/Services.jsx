@@ -104,8 +104,8 @@ const Services = () => {
 
         <Grid container spacing={4} sx={{ mb: 8 }} className="max-sm:gap-4 max-sm:mb-5">
           {services.map((service, index) => (
-            <Grid item xs={12} md={4} key={index} className="max-sm:w-full">
-              <Card className="h-full text-center p-8 border-2 border-[#e2e8f0] hover:border-[#3b82f6] max-sm:p-5 max-sm:w-full">
+            <Grid item xs={12} md={4} key={index} className="max-sm:w-full mobile-animate-in">
+              <Card className="mobile-services-card h-full text-center p-8 border-2 border-[#e2e8f0] hover:border-[#3b82f6] max-sm:p-5 max-sm:w-full">
                 <CardContent className="p-0 h-full flex flex-col">
                   <Avatar 
                     sx={{ 
@@ -122,11 +122,11 @@ const Services = () => {
                     </Box>
                   </Avatar>
                   
-                  <Typography variant="h5" gutterBottom sx={{ fontWeight: 700, mb: 2, color: '#0f172a' }} className="max-sm:!text-lg">
+                  <Typography variant="h5" gutterBottom sx={{ fontWeight: 700, mb: 2, color: '#0f172a' }} className="mobile-card-title max-sm:!text-lg">
                     {service.title}
                   </Typography>
                   
-                  <Typography variant="body1" sx={{ lineHeight: 1.8, flexGrow: 1, color: '#64748b' }} className="max-sm:!text-base">
+                  <Typography variant="body1" sx={{ lineHeight: 1.8, flexGrow: 1, color: '#64748b' }} className="mobile-card-desc max-sm:!text-base">
                     {service.description}
                   </Typography>
                 </CardContent>
