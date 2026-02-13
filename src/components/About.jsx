@@ -11,7 +11,7 @@ import { Card, CardContent } from './ui/card'
 
 const About = () => {
   return (
-    <Box id="about" sx={{ py: 12, bgcolor: '#ffffff', position: 'relative', overflow: 'hidden' }} className="max-sm:py-8 mobile-animate-in">
+    <Box id="about" sx={{ py: 12, bgcolor: '#ffffff', position: 'relative', overflow: 'hidden' }} className="reveal-section max-sm:py-8 mobile-animate-in">
       <Box
         sx={{
           position: 'absolute',
@@ -49,7 +49,7 @@ const About = () => {
 
         <Grid container spacing={4} justifyContent="center" className="max-sm:gap-4">
           <Grid item xs={12} md={10} className="max-sm:w-full">
-            <Card className="relative overflow-hidden bg-white border-2 border-[#e2e8f0] text-[#0f172a] shadow-xl hover:-translate-y-2 max-sm:w-full">
+            <Card className="reveal-card relative overflow-hidden bg-white border-2 border-[#e2e8f0] text-[#0f172a] shadow-xl hover:-translate-y-2 max-sm:w-full">
               <Box sx={{ 
                 position: 'absolute',
                 top: 0,

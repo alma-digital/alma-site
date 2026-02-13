@@ -48,7 +48,7 @@ const Process = () => {
   ]
 
   return (
-    <Box id="process" sx={{ py: 12, bgcolor: '#ffffff', position: 'relative', overflow: 'hidden' }} className="max-sm:py-6 mobile-animate-in">
+    <Box id="process" sx={{ py: 12, bgcolor: '#ffffff', position: 'relative', overflow: 'hidden' }} className="reveal-section max-sm:py-6 mobile-animate-in">
       <Container maxWidth="lg" className="mobile-container max-sm:px-4">
         <Box sx={{ textAlign: 'center', mb: 10 }} className="max-sm:mb-5 max-sm:text-center">
           <Badge variant="default" className="mb-8 text-lg font-bold py-3 px-4 max-sm:mb-4 max-sm:text-base max-sm:py-2 max-sm:px-3">
@@ -91,7 +91,7 @@ const Process = () => {
             {steps.map((step, index) => (
               <Card
                 key={index}
-                className="relative overflow-hidden bg-white border-2 border-[#e2e8f0] hover:border-current hover:-translate-x-2 max-sm:w-full"
+                className="reveal-card relative overflow-hidden bg-white border-2 border-[#e2e8f0] hover:border-current hover:-translate-x-2 max-sm:w-full"
                 style={{ borderColor: '#e2e8f0' }}
                 onMouseEnter={(e) => e.currentTarget.style.borderColor = step.color}
                 onMouseLeave={(e) => e.currentTarget.style.borderColor = '#e2e8f0'}

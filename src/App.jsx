@@ -47,6 +47,30 @@ function App() {
     return () => observerRef.current?.disconnect()
   }, [])
 
+  // Mobile-only (≤768px): Scroll Reveal — sections animate in once
+  const revealObserverRef = useRef(null)
+  useEffect(() => {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reducedMotion) {
+      document.querySelectorAll('.reveal-section').forEach((node) => node.classList.add('is-visible'))
+      return
+    }
+    revealObserverRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible')
+            revealObserverRef.current?.unobserve(entry.target)
+          }
+        })
+      },
+      { rootMargin: '0px 0px -60px 0px', threshold: 0.05 }
+    )
+    const sections = document.querySelectorAll('.reveal-section')
+    sections.forEach((s) => revealObserverRef.current?.observe(s))
+    return () => revealObserverRef.current?.disconnect()
+  }, [])
+
   return (
     <div className="overflow-x-hidden max-w-[100vw] max-sm:pb-24 sm:pb-20">
       <Navbar />

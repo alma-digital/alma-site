@@ -42,7 +42,7 @@ const Hero = () => {
   return (
     <Box
       id="home"
-      className="mobile-hero-section max-sm:min-h-[60vh] sm:min-h-screen"
+      className="reveal-section mobile-hero-section max-sm:min-h-[60vh] sm:min-h-screen"
       sx={{
         minHeight: { xs: '60vh', sm: '100vh' },
         display: 'flex',
@@ -223,7 +223,7 @@ const Hero = () => {
         {/* Stats Cards - משודרגים; מובייל: carousel אופקי */}
         <Grid container spacing={3} sx={{ mt: 8 }} className="mobile-stats-carousel max-sm:mt-5 max-sm:gap-4">
           {stats.map((stat, index) => (
-            <Grid item xs={12} sm={4} key={index} className="mobile-stats-slide max-sm:w-full">
+            <Grid item xs={12} sm={4} key={index} className="reveal-card mobile-stats-slide max-sm:w-full">
               <Paper 
                 elevation={0}
                 sx={{ 

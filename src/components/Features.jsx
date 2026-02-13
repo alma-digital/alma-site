@@ -47,7 +47,7 @@ const Features = () => {
   ]
 
   return (
-    <Box sx={{ py: 10, bgcolor: '#ffffff' }} className="max-sm:py-6 mobile-section-spacing">
+    <Box sx={{ py: 10, bgcolor: '#ffffff' }} className="reveal-section max-sm:py-6 mobile-section-spacing">
       <div className="desktop-only">
         {/* Header Bar */}
         <Box 
@@ -138,7 +138,7 @@ const Features = () => {
             רק פה אתם מקבלים
           </Typography>
           {features.map((feature, index) => (
-            <details key={index} className="mobile-accordion-item">
+            <details key={index} className="reveal-card mobile-accordion-item">
               <summary>
                 <Box component="span" sx={{ display: 'inline-flex', alignItems: 'center', gap: 1 }}>
                   {feature.icon}

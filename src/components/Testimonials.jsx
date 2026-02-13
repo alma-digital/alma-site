@@ -100,7 +100,7 @@ const Testimonials = () => {
   ]
 
   return (
-    <Box sx={{ py: 12, bgcolor: '#f8fafc' }} className="max-sm:py-6">
+    <Box sx={{ py: 12, bgcolor: '#f8fafc' }} className="reveal-section max-sm:py-6">
       <Container maxWidth="lg" className="max-sm:px-4">
         {/* Header */}
         <Box sx={{ textAlign: 'center', mb: 10 }} className="max-sm:mb-5 max-sm:text-center">
@@ -194,7 +194,7 @@ const Testimonials = () => {
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className="flex-[0_0_100%] min-w-0 px-3 max-sm:px-4 md:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
+                  className="reveal-card flex-[0_0_100%] min-w-0 px-3 max-sm:px-4 md:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
                   style={{ direction: 'rtl' }}
                 >
                   <Card 

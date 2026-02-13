@@ -395,3 +395,53 @@
     display: flex !important;
   }
 }
+
+/* ============================================
+   Scroll Reveal — MOBILE ONLY (≤768px)
+   Trigger once via IntersectionObserver.
+   ============================================ */
+@media (max-width: 768px) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-section {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .reveal-section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-section .reveal-card {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .reveal-section.is-visible .reveal-card {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-section.is-visible .reveal-card:nth-child(1) { transition-delay: 0s; }
+    .reveal-section.is-visible .reveal-card:nth-child(2) { transition-delay: 0.15s; }
+    .reveal-section.is-visible .reveal-card:nth-child(3) { transition-delay: 0.3s; }
+    .reveal-section.is-visible .reveal-card:nth-child(4) { transition-delay: 0.45s; }
+    .reveal-section.is-visible .reveal-card:nth-child(5) { transition-delay: 0.6s; }
+    .reveal-section.is-visible .reveal-card:nth-child(6) { transition-delay: 0.75s; }
+    .reveal-section.is-visible .reveal-card:nth-child(7) { transition-delay: 0.9s; }
+    .reveal-section.is-visible .reveal-card:nth-child(8) { transition-delay: 1.05s; }
+    .reveal-section.is-visible .reveal-card:nth-child(9) { transition-delay: 1.2s; }
+    .reveal-section.is-visible .reveal-card:nth-child(10) { transition-delay: 1.35s; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-section,
+    .reveal-section .reveal-card {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}
