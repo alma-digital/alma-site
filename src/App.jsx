@@ -10,6 +10,8 @@ import FAQ from './components/FAQ'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import StickyCtaBar from './components/StickyCtaBar'
+import MobileCtaBlock from './components/MobileCtaBlock'
+import MobileCtaBeforeFooter from './components/MobileCtaBeforeFooter'
 
 function App() {
   const observerRef = useRef(null)
@@ -76,12 +78,16 @@ function App() {
       <Navbar />
       <Hero />
       <Features />
+      <MobileCtaBlock />
       <About />
       <Services />
+      <MobileCtaBlock />
       <Process />
       <Testimonials />
+      <MobileCtaBlock />
       <FAQ />
       <Contact />
+      <MobileCtaBeforeFooter />
       <Footer />
       <StickyCtaBar />
     </div>

@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react'
 import { Button } from './ui/button'
 import { MessageCircle } from 'lucide-react'
 
-const MOBILE_BREAKPOINT = 640
+const MOBILE_BREAKPOINT = 768
 
 const StickyCtaBar = () => {
   const [isVisible, setIsVisible] = useState(false)
-  const [isMobile, setIsMobile] = useState(() => 
+  const [isMobile, setIsMobile] = useState(() =>
     typeof window !== 'undefined' && window.innerWidth < MOBILE_BREAKPOINT
   )
 
@@ -21,13 +21,13 @@ const StickyCtaBar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // On mobile: always show. On desktop: show after 200px scroll
-      if (window.innerWidth < MOBILE_BREAKPOINT) {
-        setIsVisible(true)
-      } else if (window.scrollY > 200) {
-        setIsVisible(true)
+      const isMobileView = window.innerWidth < MOBILE_BREAKPOINT
+      if (isMobileView) {
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight
+        const threshold = scrollHeight * 0.4
+        setIsVisible(scrollHeight > 0 && window.scrollY >= threshold)
       } else {
-        setIsVisible(false)
+        setIsVisible(window.scrollY > 200)
       }
     }
     handleScroll()
@@ -35,7 +35,7 @@ const StickyCtaBar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const showBar = isMobile || isVisible
+  const showBar = isVisible
 
   return (
     <div
@@ -64,7 +64,7 @@ const StickyCtaBar = () => {
             <Button
               asChild
               size="lg"
-              className="mobile-cta-btn bg-[#25D366] hover:bg-[#1ea952] text-white font-bold text-lg sm:text-xl px-8 py-5 rounded-xl shadow-[0_6px_24px_rgba(37,211,102,0.35)] hover:shadow-[0_10px_32px_rgba(37,211,102,0.5)] hover:-translate-y-1 active:translate-y-0 transition-all duration-200 whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 max-sm:w-full max-sm:justify-center max-sm:py-4 max-sm:text-base"
+              className="mobile-cta-btn mobile-cta-primary bg-[#25D366] hover:bg-[#1ea952] text-white font-bold text-lg sm:text-xl px-8 py-5 rounded-xl shadow-[0_6px_24px_rgba(37,211,102,0.35)] hover:shadow-[0_10px_32px_rgba(37,211,102,0.5)] hover:-translate-y-1 active:translate-y-0 transition-all duration-200 whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 max-sm:w-full max-sm:justify-center max-sm:py-4 max-sm:text-base"
             >
               <a
                 href="https://wa.me/972525473560?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%99%D7%99%D7%A2%D7%95%D7%A5%20%D7%A2%D7%9C%20%D7%93%D7%A3%20%D7%A0%D7%97%D7%99%D7%AA%D7%94"

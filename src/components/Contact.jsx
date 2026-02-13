@@ -81,15 +81,15 @@ const Contact = () => {
       className="mobile-reveal-root max-sm:py-6"
     >
       <Container maxWidth="lg" className="max-sm:px-4">
-        <Box sx={{ textAlign: 'center', mb: 8 }} className="max-sm:mb-5 max-sm:text-center">
-          <Badge variant="secondary" className="mb-8 text-lg font-bold py-3 px-4 max-sm:mb-4 max-sm:text-base max-sm:py-2 max-sm:px-3">
+        <Box sx={{ textAlign: 'center', mb: 8 }} className="contact-header max-sm:mb-5 max-sm:text-center">
+          <Badge variant="secondary" className="contact-badge-desktop mb-8 text-lg font-bold py-3 px-4 max-sm:mb-4 max-sm:text-base max-sm:py-2 max-sm:px-3">
             <Mail className="ml-2 h-6 w-6" />
             צור קשר
           </Badge>
           <Typography 
             variant="h2" 
             gutterBottom 
-            className="mobile-animate-heading text-shadow-md max-sm:!text-2xl max-sm:leading-tight"
+            className="contact-heading-mobile-hide mobile-animate-heading text-shadow-md max-sm:!text-2xl max-sm:leading-tight"
             sx={{ 
               fontWeight: 700,
               fontSize: { xs: '2.8rem', md: '4rem' },
@@ -104,7 +104,7 @@ const Contact = () => {
           <Typography 
             variant="h5" 
             color="text.secondary" 
-            className="text-shadow-sm max-sm:!text-base"
+            className="contact-subtitle-desktop text-shadow-sm max-sm:!text-base"
             sx={{ 
               maxWidth: 700, 
               mx: 'auto',

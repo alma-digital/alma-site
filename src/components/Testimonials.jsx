@@ -132,7 +132,7 @@ const Testimonials = () => {
   ]
 
   return (
-    <Box sx={{ py: 12, bgcolor: '#f8fafc' }} className="mobile-reveal-root max-sm:py-6">
+    <Box id="testimonials" sx={{ py: 12, bgcolor: '#f8fafc' }} className="mobile-reveal-root max-sm:py-6">
       <Container maxWidth="lg" className="max-sm:px-4">
         {/* Header */}
         <Box sx={{ textAlign: 'center', mb: 10 }} className="max-sm:mb-5 max-sm:text-center">
@@ -355,7 +355,7 @@ const Testimonials = () => {
           </div>
         </Box>
 
-        {/* CTA Section - Enhanced for better visibility */}
+        {/* CTA Section - Enhanced for better visibility; on mobile styled as secondary (mobile.css) */}
         <Box 
           sx={{ 
             textAlign: 'center',
@@ -377,7 +377,7 @@ const Testimonials = () => {
               background: 'linear-gradient(90deg, #60a5fa, #3b82f6, #2563eb)',
             }
           }}
-          className="max-sm:mt-5 max-sm:p-5 max-sm:mx-0"
+          className="testimonials-cta-box max-sm:mt-5 max-sm:p-5 max-sm:mx-0"
         >
           <Typography 
             variant="h5" 
@@ -410,7 +410,7 @@ const Testimonials = () => {
           <Button
             asChild
             size="lg"
-            className="mobile-animate-btn bg-white hover:bg-gray-50 text-[#3b82f6] font-bold text-lg sm:text-xl px-10 py-6 rounded-xl shadow-[0_8px_30px_rgba(255,255,255,0.3)] hover:shadow-[0_12px_40px_rgba(255,255,255,0.45)] hover:-translate-y-1 active:translate-y-0 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#3b82f6] max-sm:w-full max-sm:py-4 max-sm:text-base"
+            className="mobile-animate-btn testimonials-cta-btn bg-white hover:bg-gray-50 text-[#3b82f6] font-bold text-lg sm:text-xl px-10 py-6 rounded-xl shadow-[0_8px_30px_rgba(255,255,255,0.3)] hover:shadow-[0_12px_40px_rgba(255,255,255,0.45)] hover:-translate-y-1 active:translate-y-0 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#3b82f6] max-sm:w-full max-sm:py-4 max-sm:text-base"
           >
             <a
               href="https://wa.me/972525473560?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%A4%D7%99%D7%93%D7%91%D7%A7%D7%99%D7%9D%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%93%D7%91%D7%A8%20%D7%A2%D7%9C%20%D7%93%D7%A3%20%D7%A0%D7%97%D7%99%D7%AA%D7%94"

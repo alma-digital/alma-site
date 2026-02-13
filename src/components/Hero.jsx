@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import {
   Box,
   Container,
@@ -29,6 +29,10 @@ const Hero = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down(768))
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [progress, setProgress] = useState(0)
+  const logoParallaxRef = useRef(0)
+  const logoWrapperRef = useRef(null)
+  const rafRef = useRef(null)
+  const [heroScrolled, setHeroScrolled] = useState(false)
 
   const statsEmblaOptions = {
     align: 'center',
@@ -59,6 +63,39 @@ const Hero = () => {
     return () => clearInterval(t)
   }, [isMobile, selectedIndex])
 
+  useEffect(() => {
+    if (!isMobile || typeof window === 'undefined') return
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReduced) return
+    const el = logoWrapperRef.current
+    if (!el) return
+    const onScroll = () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+      rafRef.current = requestAnimationFrame(() => {
+        const y = window.scrollY * 0.025
+        logoParallaxRef.current = Math.max(-3, Math.min(3, y))
+        el.style.transform = `translate3d(0,${logoParallaxRef.current}px,0)`
+        rafRef.current = null
+      })
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+    }
+  }, [isMobile])
+
+  useEffect(() => {
+    if (!isMobile) return
+    const onScroll = () => {
+      setHeroScrolled(window.scrollY > 30)
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [isMobile])
+
   const stats = [
     { 
       number: '20+', 
@@ -83,9 +120,9 @@ const Hero = () => {
   return (
     <Box
       id="home"
-      className="mobile-reveal-root mobile-hero-section max-sm:min-h-[60vh] sm:min-h-screen"
+      className="mobile-reveal-root mobile-hero-section max-sm:min-h-0 sm:min-h-screen"
       sx={{
-        minHeight: { xs: '60vh', sm: '100vh' },
+        minHeight: { sm: '100vh' },
         display: 'flex',
         alignItems: 'center',
         position: 'relative',
@@ -103,12 +140,25 @@ const Hero = () => {
         }
       }}
     >
+      <div
+        className={`hero-scroll-overlay max-sm:block hidden ${heroScrolled ? 'hero-scroll-overlay-active' : ''}`}
+        aria-hidden="true"
+      />
       <Container maxWidth="lg" className="mobile-container max-sm:px-4 max-sm:py-6 sm:py-8" sx={{ position: 'relative', zIndex: 1, py: 8 }}>
         <Grid container spacing={8} alignItems="center" className="max-sm:flex-col max-sm:gap-4 sm:gap-8">
           {/* Content - on mobile: logo inline, then heading, subtitle, badge, body, CTA */}
           <Grid item xs={12} md={6} className="max-sm:order-1 max-sm:text-center max-sm:w-full mobile-animate-in mobile-hero-premium-wrap hero-content-mobile">
-            <div className="mobile-hero-logo-inline logo-mobile logo-inline-mobile max-sm:block hidden">
-              <img src="/logo.png" alt="Alma Digital" />
+            <div ref={logoWrapperRef} className="mobile-hero-logo-parallax-wrap max-sm:block hidden">
+              <div className="mobile-hero-logo-glass">
+                <div className="mobile-hero-logo-particles" aria-hidden="true">
+                  {[0, 1, 2, 3, 4, 5].map((i) => (
+                    <span key={i} className="mobile-hero-particle" style={{ animationDelay: `${1.2 + i * 0.45}s` }} />
+                  ))}
+                </div>
+                <div className="mobile-hero-logo-inline logo-mobile logo-inline-mobile">
+                  <img src="/logo.png" alt="Alma Digital" />
+                </div>
+              </div>
             </div>
             <div className="hero-title-row">
               <Typography 
@@ -154,10 +204,16 @@ const Hero = () => {
             </Typography>
             
             <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, mb: 6 }} className="hero-buttons mobile-hero-buttons max-sm:flex-col max-sm:items-center max-sm:gap-3 max-sm:mb-5">
+              <div className="max-sm:block hidden mobile-cta-primary-wrap w-full max-w-[320px]">
+                <p className="mobile-cta-urgency text-center text-sm mt-2 opacity-80" aria-hidden="true">מקומות מוגבלים החודש</p>
+                <p className="mobile-cta-trust text-center text-xs mt-1 opacity-70 flex items-center justify-center gap-1" aria-hidden="true">
+                  <Verified sx={{ fontSize: 14 }} /> תשובה תוך 24 שעות
+                </p>
+              </div>
               <Button 
                 asChild
                 size="lg"
-                className="mobile-animate-btn mobile-btn-block bg-[#0f172a] text-white hover:bg-[#1e293b] hover:scale-105 shadow-lg hover:shadow-xl text-lg font-bold px-8 py-4 rounded-xl transition-all duration-300 max-sm:w-full max-sm:justify-center max-sm:text-base max-sm:py-3"
+                className="mobile-animate-btn mobile-btn-block mobile-cta-primary bg-[#0f172a] text-white hover:bg-[#1e293b] hover:scale-105 shadow-lg hover:shadow-xl text-lg font-bold px-8 py-4 rounded-xl transition-all duration-300 max-sm:hidden sm:inline-flex sm:justify-center sm:text-base sm:py-3"
               >
                 <a 
                   href="https://wa.me/972525473560?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%99%D7%99%D7%A2%D7%95%D7%A5"

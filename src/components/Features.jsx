@@ -47,7 +47,7 @@ const Features = () => {
   ]
 
   return (
-    <Box sx={{ py: 10, bgcolor: '#ffffff' }} className="mobile-reveal-root max-sm:py-6 mobile-section-spacing">
+    <Box id="features" sx={{ py: 10, bgcolor: '#ffffff' }} className="mobile-reveal-root max-sm:py-6 mobile-section-spacing">
       <div className="desktop-only">
         {/* Header Bar */}
         <Box 

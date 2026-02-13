@@ -385,6 +385,365 @@
    Trigger once via IntersectionObserver on .mobile-reveal-root.
    ============================================ */
 @media (max-width: 768px) {
+  /* ========== Level 2: Grid Alignment & Container (mobile only) ========== */
+  #home .MuiContainer-root,
+  #features .MuiContainer-root,
+  #about .MuiContainer-root,
+  #services .MuiContainer-root,
+  #process .MuiContainer-root,
+  #testimonials .MuiContainer-root,
+  #faq .MuiContainer-root,
+  #contact .MuiContainer-root,
+  .mobile-reveal-root .MuiContainer-root,
+  .mobile-reveal-root .mobile-container,
+  footer .MuiContainer-root {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .mobile-reveal-root .MuiContainer-root,
+  .mobile-reveal-root .mobile-container {
+    overflow-x: hidden !important;
+  }
+
+  .mobile-reveal-root .MuiContainer-root > *:first-child,
+  .mobile-reveal-root .mobile-container > *:first-child {
+    margin-top: 0 !important;
+  }
+
+  .mobile-reveal-root .mobile-btn-block,
+  .mobile-reveal-root button.mobile-animate-btn,
+  .mobile-reveal-root .mobile-hero-buttons .mobile-btn-block,
+  .mobile-reveal-root [class*="mobile-cta-btn"] {
+    border-radius: 14px !important;
+  }
+
+  .mobile-reveal-root .mobile-hero-buttons,
+  .mobile-reveal-root .hero-buttons {
+    margin-top: 42px !important;
+    margin-bottom: 36px !important;
+  }
+
+  .mobile-stat-card {
+    padding: 24px 20px !important;
+  }
+
+  .mobile-card,
+  .mobile-card-soft {
+    padding: 20px !important;
+  }
+
+  .mobile-hero-logo-parallax-wrap,
+  .mobile-trust-strip,
+  .embla-premium {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* ========== Vertical Spacing System (mobile only) ========== */
+  #home,
+  #features,
+  #about,
+  #services,
+  #process,
+  #testimonials,
+  #faq,
+  #contact {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+    margin-bottom: 72px !important;
+  }
+
+  #services {
+    padding-top: 32px !important;
+  }
+
+  #testimonials {
+    padding-top: 48px !important;
+    padding-bottom: 28px !important;
+  }
+
+  #contact {
+    padding-top: 56px !important;
+    padding-bottom: 36px !important;
+  }
+
+  #process {
+    margin-bottom: 80px !important;
+  }
+
+  #faq {
+    margin-bottom: 104px !important;
+  }
+
+  #services,
+  #process {
+    padding-bottom: 28px !important;
+  }
+
+  .mobile-hero-section {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+    margin-bottom: 72px !important;
+  }
+
+  /* ========== Level 7: Perceived Premium (mobile only) ========== */
+  #home,
+  #features,
+  #about,
+  #services,
+  #process,
+  #testimonials,
+  #faq,
+  #contact {
+    padding-top: 28px !important;
+    padding-bottom: 28px !important;
+    margin-bottom: 76px !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  #services {
+    padding-top: 36px !important;
+    padding-bottom: 30px !important;
+  }
+
+  #testimonials {
+    padding-top: 52px !important;
+    padding-bottom: 32px !important;
+  }
+
+  #contact {
+    padding-top: 60px !important;
+    padding-bottom: 40px !important;
+  }
+
+  #process {
+    margin-bottom: 80px !important;
+  }
+
+  #faq {
+    margin-bottom: 108px !important;
+  }
+
+  .mobile-hero-section {
+    padding-top: 28px !important;
+    padding-bottom: 28px !important;
+    margin-bottom: 76px !important;
+    overflow-x: hidden !important;
+  }
+
+  /* ---------- Authority / premium polish: section dividers (mobile only) ---------- */
+  #features,
+  #about,
+  #services,
+  #process,
+  #testimonials,
+  #faq,
+  #contact {
+    border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+  }
+
+  footer.mobile-footer-compact,
+  .mobile-footer-compact {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* ========== Level 5: Neuro-Conversion (mobile only) ========== */
+  #contact .MuiContainer-root > .MuiBox-root:first-of-type {
+    margin-bottom: 36px !important;
+  }
+
+  #contact .MuiGrid-container {
+    gap: 20px !important;
+  }
+
+  /* ========== Level 6: Emotional UX (mobile only) ========== */
+  #contact .MuiContainer-root > .MuiBox-root:first-of-type {
+    margin-bottom: 44px !important;
+  }
+
+  #contact .MuiGrid-container {
+    gap: 24px !important;
+  }
+
+  #contact form button[type="submit"],
+  #contact button[type="submit"] {
+    margin-top: 32px !important;
+  }
+
+  /* ---------- Contact section: mobile – hide heading only; show Badge "צור קשר" ---------- */
+  #contact .contact-heading-mobile-hide {
+    display: none !important;
+  }
+
+  #contact .contact-subtitle-desktop {
+    display: none !important;
+  }
+
+  .mobile-cta-card {
+    padding: 24px 20px 24px !important;
+  }
+
+  .mobile-cta-card .mobile-cta-text {
+    margin-bottom: 20px !important;
+  }
+
+  .mobile-cta-card .mobile-cta-btn {
+    margin-top: 4px !important;
+  }
+
+  .mobile-reveal-root h2,
+  .mobile-reveal-root .mobile-animate-heading {
+    margin-bottom: 20px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .mobile-reveal-root .mobile-animate-body,
+  .mobile-reveal-root .mobile-hero-subline,
+  .mobile-reveal-root .mobile-section-spacing p {
+    margin-bottom: 24px !important;
+  }
+
+  .embla-premium__container {
+    gap: 22px !important;
+  }
+
+  .embla-premium__slide {
+    padding: 0 10px !important;
+  }
+
+  .mobile-testimonial-card {
+    padding: 20px !important;
+  }
+
+  /* ---------- Authority: soft shadow + micro scale on touch (mobile only) ---------- */
+  .mobile-stat-card,
+  .mobile-card,
+  .mobile-card-soft,
+  .mobile-testimonial-card {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+    transition: transform 0.25s ease !important;
+  }
+
+  .mobile-stat-card:active,
+  .mobile-card:active,
+  .mobile-card-soft:active,
+  .mobile-testimonial-card:active {
+    transform: scale(1.01) !important;
+  }
+
+  /* ========== Conversion Flow (mobile only) ========== */
+  .mobile-cta-flow {
+    padding-top: 48px !important;
+    padding-bottom: 32px !important;
+    text-align: center !important;
+  }
+
+  .mobile-cta-flow-inner {
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+  }
+
+  .mobile-cta-flow-btn {
+    width: 100% !important;
+    max-width: 320px !important;
+    border: 1px solid #1e293b !important;
+    background: transparent !important;
+    color: #1e293b !important;
+    font-weight: 600 !important;
+    border-radius: 14px !important;
+    padding: 14px 20px !important;
+    box-shadow: none !important;
+  }
+
+  .mobile-cta-flow-btn:hover {
+    background: rgba(30, 41, 59, 0.06) !important;
+    color: #1e293b !important;
+  }
+
+  .testimonials-cta-box {
+    background: #f8fafc !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+  }
+
+  .testimonials-cta-box::before {
+    display: none !important;
+  }
+
+  .testimonials-cta-box .MuiTypography-root {
+    color: #1e293b !important;
+  }
+
+  .testimonials-cta-btn {
+    background: transparent !important;
+    color: #1e293b !important;
+    border: 1px solid #1e293b !important;
+    box-shadow: none !important;
+  }
+
+  .testimonials-cta-btn:hover {
+    background: rgba(30, 41, 59, 0.06) !important;
+    color: #1e293b !important;
+  }
+
+  .mobile-cta-primary {
+    animation: ctaPulse 8s ease-in-out infinite !important;
+  }
+
+  @keyframes ctaPulse {
+    0%, 96%, 100% {
+      opacity: 1;
+    }
+    98% {
+      opacity: 0.92;
+    }
+  }
+
+  .mobile-cta-card {
+    padding: 16px 20px 16px !important;
+  }
+
+  .mobile-cta-card .mobile-cta-text p {
+    font-size: 15px !important;
+  }
+
+  .mobile-cta-before-footer {
+    padding-top: 48px !important;
+    padding-bottom: 40px !important;
+    text-align: center !important;
+  }
+
+  .mobile-cta-before-footer-inner {
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+  }
+
+  .mobile-cta-before-footer-btn {
+    width: 100% !important;
+    max-width: 320px !important;
+    background: #0f172a !important;
+    color: #fff !important;
+    font-weight: 700 !important;
+    border-radius: 14px !important;
+    padding: 14px 20px !important;
+    border: none !important;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2) !important;
+  }
+
+  .mobile-cta-before-footer-btn:hover {
+    background: #1e293b !important;
+    color: #fff !important;
+  }
+
   /* ---------- CTA buttons: flex, arrow inside, hide "לדבר עכשיו" ---------- */
   .mobile-hero-buttons .mobile-btn-block {
     display: flex !important;
@@ -422,22 +781,24 @@
     padding: 5px 12px !important;
     border-radius: 999px !important;
     opacity: 0.9 !important;
+    margin-top: 8px !important;
+    margin-bottom: 24px !important;
   }
 
   .mobile-hero-section {
-    padding-top: 40px !important;
-    padding-bottom: 60px !important;
+    min-height: unset !important;
+    height: auto !important;
   }
 
   .mobile-hero-premium-wrap {
-    margin-top: 40px !important;
+    margin-top: 0 !important;
   }
 
   .hero-title-row {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    margin-bottom: 16px !important;
+    margin-bottom: 24px !important;
     opacity: 0;
     animation: fadeUpTitleRow 0.7s ease-out forwards !important;
   }
@@ -461,14 +822,111 @@
     }
   }
 
+  .mobile-hero-section::before {
+    content: none !important;
+    display: none !important;
+    background: none !important;
+  }
+
+  .hero-scroll-overlay {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    background: rgba(0, 0, 0, 0.04) !important;
+    opacity: 0 !important;
+    transition: opacity 0.6s ease !important;
+    pointer-events: none !important;
+  }
+
+  .hero-scroll-overlay.hero-scroll-overlay-active {
+    opacity: 1 !important;
+  }
+
+  .mobile-hero-logo-parallax-wrap {
+    display: block !important;
+    margin: 0 auto 40px auto !important;
+    width: 285px !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    will-change: transform !important;
+  }
+
+  .mobile-hero-logo-glass {
+    position: relative !important;
+    width: 285px !important;
+    margin: 0 auto !important;
+    padding: 20px !important;
+    border-radius: 20px !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04)) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
+
+  .mobile-hero-logo-particles {
+    position: absolute !important;
+    inset: 0 !important;
+    pointer-events: none !important;
+    overflow: hidden !important;
+    border-radius: inherit !important;
+    z-index: 2 !important;
+  }
+
+  .mobile-hero-particle {
+    position: absolute !important;
+    width: 4px !important;
+    height: 4px !important;
+    border-radius: 50% !important;
+    background: rgba(59, 130, 246, 0.35) !important;
+    top: 22% !important;
+    left: 72% !important;
+    animation: heroParticleFloat 1.5s ease-out forwards !important;
+    opacity: 0 !important;
+  }
+
+  .mobile-hero-particle:nth-child(1) { left: 70% !important; top: 20% !important; }
+  .mobile-hero-particle:nth-child(2) { left: 74% !important; top: 24% !important; }
+  .mobile-hero-particle:nth-child(3) { left: 72% !important; top: 18% !important; }
+  .mobile-hero-particle:nth-child(4) { left: 76% !important; top: 22% !important; }
+  .mobile-hero-particle:nth-child(5) { left: 68% !important; top: 26% !important; }
+  .mobile-hero-particle:nth-child(6) { left: 74% !important; top: 16% !important; }
+
+  @keyframes heroParticleFloat {
+    0% {
+      opacity: 0.9;
+      transform: translate(0, 0) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-8px, -24px) scale(0.6);
+    }
+  }
+
   .mobile-hero-logo-inline {
-    max-width: 125px !important;
-    width: 125px !important;
-    margin: 0 auto 28px auto !important;
+    position: relative !important;
+    max-width: 245px !important;
+    width: 245px !important;
+    margin: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
     display: block !important;
     opacity: 0.95 !important;
     background: none !important;
-    box-shadow: 0 0 28px rgba(59, 130, 246, 0.1) !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+  }
+
+  .mobile-hero-logo-inline::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  .mobile-hero-logo-inline::after {
+    content: none !important;
+    display: none !important;
   }
 
   .mobile-hero-logo-inline img {
@@ -507,38 +965,57 @@
 
   .hero-title {
     opacity: 0;
-    transform: translateY(18px);
-    animation: heroFadeUp 0.6s ease forwards;
-    margin-bottom: 16px !important;
+    animation: heroFadeSoft 0.6s ease forwards;
+    margin-bottom: 30px !important;
     line-height: 1.3 !important;
   }
 
   .hero-subtitle {
     opacity: 0;
-    transform: translateY(18px);
-    animation: heroFadeUp 0.6s ease forwards;
+    animation: heroFadeSoft 0.6s ease forwards;
     animation-delay: 0.15s;
-    margin-bottom: 20px !important;
+    margin-bottom: 28px !important;
     line-height: 1.6 !important;
     font-size: 15px !important;
   }
 
+  @keyframes heroFadeSoft {
+    to {
+      opacity: 1;
+    }
+  }
+
   .hero-buttons {
     opacity: 0;
-    transform: translateY(18px);
-    animation: heroFadeUp 0.6s ease forwards;
+    animation: heroFadeSoft 0.6s ease forwards;
     animation-delay: 0.3s;
-    margin-top: 28px !important;
+    margin-top: 48px !important;
+    margin-bottom: 36px !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 14px !important;
+    gap: 16px !important;
+  }
+
+  .hero-buttons .mobile-btn-block:first-of-type {
+    margin-bottom: 24px !important;
+  }
+
+  .mobile-cta-primary-wrap {
+    opacity: 0;
+    animation: heroFadeSoft 0.6s ease 0.5s forwards;
+  }
+
+  .mobile-cta-urgency,
+  .mobile-cta-trust {
+    color: #1e293b;
   }
 
   .logo-inline-mobile {
     opacity: 0;
-    transform: translateY(10px);
-    animation: heroLogoEnter 0.6s ease 0.2s forwards,
-               heroLogoFloat 3.5s ease-in-out 0.8s infinite !important;
+    transform: scale(0.85) translateY(-40px);
+    filter: blur(2px);
+    animation: heroLogoEnter 1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards,
+               heroLogoFloat 4s ease-in-out 1.2s infinite !important;
   }
 
   @keyframes heroFadeUp {
@@ -551,7 +1028,8 @@
   @keyframes heroLogoEnter {
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: scale(1) translateY(0);
+      filter: blur(0);
     }
   }
 
@@ -560,7 +1038,7 @@
       transform: translateY(0);
     }
     50% {
-      transform: translateY(6px);
+      transform: translateY(5px);
     }
   }
 
@@ -570,7 +1048,8 @@
 
   .mobile-hero-premium-wrap .mobile-animate-body,
   .mobile-hero-premium-wrap .mobile-hero-subline {
-    margin-top: 16px !important;
+    margin-top: 24px !important;
+    margin-bottom: 40px !important;
     line-height: 1.7 !important;
     font-size: 14px !important;
     opacity: 0.85 !important;
@@ -579,7 +1058,7 @@
   .mobile-hero-secondary-btn {
     border: 1px solid #1e293b !important;
     background: transparent !important;
-    margin-top: 14px !important;
+    margin-top: 0 !important;
     width: 100% !important;
     border-radius: 14px !important;
     padding: 14px !important;
@@ -590,9 +1069,10 @@
     display: flex !important;
     flex-wrap: wrap !important;
     justify-content: center !important;
-    gap: 12px 18px !important;
-    margin-top: 26px !important;
-    padding-top: 16px !important;
+    gap: 16px !important;
+    margin-top: 60px !important;
+    padding-top: 28px !important;
+    padding-bottom: 28px !important;
     border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
   }
 
@@ -606,22 +1086,7 @@
   }
 
   .mobile-hero-logo-bg {
-    display: block !important;
-    max-width: 160px !important;
-    opacity: 0.15 !important;
-    margin-top: 40px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-
-  .mobile-hero-logo-bg .mobile-hero-logo-outer {
-    max-width: 160px !important;
-    margin: 0 auto !important;
-    display: block !important;
-  }
-
-  .mobile-hero-logo-bg .mobile-hero-logo-wrap {
-    max-width: 160px !important;
+    display: none !important;
   }
 
 
@@ -668,14 +1133,33 @@
     .hero-title,
     .hero-subtitle,
     .hero-buttons,
-    .logo-inline-mobile {
+    .logo-inline-mobile,
+    .mobile-cta-primary-wrap {
       animation: none !important;
       opacity: 1 !important;
       transform: none !important;
+      filter: none !important;
     }
     .mobile-hero-logo-inline {
       animation: none !important;
       opacity: 0.95 !important;
+    }
+    .mobile-hero-logo-inline::after {
+      animation: none !important;
+      opacity: 0 !important;
+    }
+    .mobile-hero-logo-parallax-wrap {
+      will-change: auto !important;
+    }
+    .mobile-hero-logo-particles {
+      visibility: hidden !important;
+    }
+    .mobile-hero-particle {
+      animation: none !important;
+      opacity: 0 !important;
+    }
+    .hero-scroll-overlay {
+      transition: none !important;
     }
   }
 
@@ -848,7 +1332,7 @@
     border-radius: 16px !important;
     overflow: hidden !important;
     border: 2px solid #e2e8f0 !important;
-    padding: 32px 16px !important;
+    padding: 22px 18px !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
