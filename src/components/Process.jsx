@@ -91,7 +91,7 @@ const Process = () => {
             {steps.map((step, index) => (
               <Card
                 key={index}
-                className="mobile-animate-card relative overflow-hidden bg-white border-2 border-[#e2e8f0] hover:border-current hover:-translate-x-2 max-sm:w-full"
+                className="process-card mobile-animate-card relative overflow-hidden bg-white border-2 border-[#e2e8f0] hover:border-current hover:-translate-x-2 max-sm:w-full"
                 style={{ borderColor: '#e2e8f0' }}
                 onMouseEnter={(e) => e.currentTarget.style.borderColor = step.color}
                 onMouseLeave={(e) => e.currentTarget.style.borderColor = '#e2e8f0'}
@@ -110,6 +110,7 @@ const Process = () => {
                 <CardContent className="p-8 relative z-10 max-sm:p-5">
                   <Box sx={{ display: 'flex', gap: 3, alignItems: 'flex-start' }} className="max-sm:flex-col max-sm:items-center max-sm:text-center">
                     <Avatar
+                      className="process-number"
                       sx={{
                         width: 80,
                         height: 80,

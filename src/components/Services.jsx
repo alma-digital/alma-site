@@ -102,12 +102,12 @@ const Services = () => {
           </Typography>
         </Box>
 
-        <Grid container spacing={4} sx={{ mb: 8 }} className="max-sm:gap-4 max-sm:mb-5">
+        <div className="services-carousel">
           {services.map((service, index) => (
-            <Grid item xs={12} md={4} key={index} className="max-sm:w-full mobile-animate-in">
-              <Card className="mobile-animate-card mobile-services-card h-full text-center p-8 border-2 border-[#e2e8f0] hover:border-[#3b82f6] max-sm:p-5 max-sm:w-full">
+            <Card key={index} className="service-card carousel-item mobile-animate-card mobile-services-card mobile-stat-card h-full text-center p-8 border-2 border-[#e2e8f0] hover:border-[#3b82f6] max-sm:p-5 max-sm:w-full">
                 <CardContent className="p-0 h-full flex flex-col">
                   <Avatar 
+                    className="mobile-services-icon-wrap mobile-stat-icon-circle"
                     sx={{ 
                       width: 90,
                       height: 90,
@@ -131,9 +131,8 @@ const Services = () => {
                   </Typography>
                 </CardContent>
               </Card>
-            </Grid>
           ))}
-        </Grid>
+        </div>
 
         {/* Benefits Bar */}
         <Grid container spacing={3} className="max-sm:gap-4">

@@ -231,6 +231,7 @@ const Testimonials = () => {
 
                     {/* Quote Icon */}
                     <Box
+                      className="quote-icon"
                       sx={{
                         position: 'absolute',
                         top: -20,

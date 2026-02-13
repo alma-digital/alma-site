@@ -211,26 +211,9 @@
     transform: scale(1.2);
   }
 
-  /* ---------- Services: compact cards ---------- */
+  /* ---------- Services: use .mobile-stat-card (no conflicting overrides) ---------- */
   .mobile-services-card {
-    padding: 14px 16px !important;
-    border-radius: 18px !important;
     margin-bottom: 12px !important;
-  }
-
-  .mobile-services-card .mobile-card-title {
-    font-size: 17px !important;
-    margin-bottom: 6px !important;
-  }
-
-  .mobile-services-card .mobile-card-desc {
-    font-size: 14px !important;
-    line-height: 1.45 !important;
-    opacity: 0.85;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
   }
 
   /* ---------- Why Us / Benefits: accordion ---------- */
@@ -402,6 +385,127 @@
    Trigger once via IntersectionObserver on .mobile-reveal-root.
    ============================================ */
 @media (max-width: 768px) {
+  /* ---------- CTA buttons: flex, arrow inside, hide "לדבר עכשיו" ---------- */
+  .mobile-hero-buttons .mobile-btn-block {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+    border-radius: 14px !important;
+    padding: 14px 18px !important;
+  }
+
+  .mobile-hero-buttons .mobile-btn-block svg {
+    display: inline-flex !important;
+    align-items: center !important;
+    position: static !important;
+    margin: 0 !important;
+    transform: none !important;
+  }
+
+  .mobile-cta-dabar-hide {
+    display: none !important;
+  }
+
+  /* ---------- Services: horizontal carousel (mobile only) ---------- */
+  .services-carousel {
+    display: flex !important;
+    overflow-x: auto !important;
+    gap: 16px !important;
+    padding: 0 16px !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    margin-bottom: 32px !important;
+  }
+
+  .services-carousel::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .services-carousel .carousel-item {
+    min-width: 85% !important;
+    flex: 0 0 auto !important;
+    scroll-snap-align: center !important;
+  }
+
+  /* ---------- Process: center number circle at top (mobile only) ---------- */
+  .process-card {
+    position: relative !important;
+    padding-top: 40px !important;
+  }
+
+  .process-number {
+    width: 60px !important;
+    height: 60px !important;
+    font-size: 18px !important;
+    margin: 0 auto 16px auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* ---------- Testimonials: hide quote icon on mobile ---------- */
+  .quote-icon {
+    display: none !important;
+  }
+
+  /* ---------- Stat card style (Hero + Services): same class, same layout ---------- */
+  .mobile-stat-card {
+    position: relative !important;
+    background: #ffffff !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    border: 2px solid #e2e8f0 !important;
+    padding: 32px 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .mobile-stat-card > div {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 0 !important;
+    text-align: center !important;
+  }
+
+  .mobile-stat-card .mobile-stat-icon-circle {
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    min-height: 56px !important;
+    border-radius: 50% !important;
+    margin: 0 auto 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3) !important;
+  }
+
+  .mobile-stat-card .mobile-stat-icon-circle > * {
+    font-size: 28px !important;
+  }
+
+  .mobile-stat-card .mobile-card-title {
+    text-align: center !important;
+    margin-bottom: 8px !important;
+    font-size: 1.1rem !important;
+  }
+
+  .mobile-stat-card .mobile-card-desc {
+    text-align: center !important;
+    margin-bottom: 0 !important;
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+    -webkit-line-clamp: unset !important;
+    display: block !important;
+    overflow: visible !important;
+  }
+
   @media (prefers-reduced-motion: no-preference) {
     .mobile-reveal-root .mobile-animate-heading {
       opacity: 0;
@@ -449,5 +553,20 @@
       transform: none;
       transition: none;
     }
+  }
+}
+
+/* Desktop: keep services as grid (unchanged) */
+@media (min-width: 769px) {
+  .services-carousel {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 32px !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin-bottom: 32px !important;
+  }
+  .services-carousel .carousel-item {
+    min-width: unset !important;
   }
 }

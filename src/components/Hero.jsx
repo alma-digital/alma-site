@@ -128,7 +128,7 @@ const Hero = () => {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Link to="contact" spy={true} smooth={true} offset={-70} duration={500} className="max-sm:w-full sm:hidden">
+              <Link to="contact" spy={true} smooth={true} offset={-70} duration={500} className="max-sm:w-full sm:hidden mobile-cta-dabar-hide">
                 <Button 
                   variant="ghost"
                   size="lg"
@@ -225,6 +225,7 @@ const Hero = () => {
           {stats.map((stat, index) => (
             <Grid item xs={12} sm={4} key={index} className="mobile-animate-card mobile-stats-slide max-sm:w-full">
               <Paper 
+                className="mobile-stat-card"
                 elevation={0}
                 sx={{ 
                   position: 'relative',
@@ -265,7 +266,7 @@ const Hero = () => {
                       boxShadow: `0 10px 30px ${stat.color === '#3b82f6' ? 'rgba(59, 130, 246, 0.3)' : 'rgba(15, 23, 42, 0.2)'}`,
                       color: 'white'
                     }}
-                    className="max-sm:!w-14 max-sm:!h-14 max-sm:!mb-2"
+                    className="mobile-stat-icon-circle max-sm:!w-14 max-sm:!h-14 max-sm:!mb-2"
                   >
                     {stat.icon}
                   </Box>
