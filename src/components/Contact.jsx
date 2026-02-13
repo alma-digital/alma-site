@@ -78,7 +78,7 @@ const Contact = () => {
         background: '#ffffff',
         position: 'relative'
       }}
-      className="reveal-section max-sm:py-6"
+      className="mobile-reveal-root max-sm:py-6"
     >
       <Container maxWidth="lg" className="max-sm:px-4">
         <Box sx={{ textAlign: 'center', mb: 8 }} className="max-sm:mb-5 max-sm:text-center">
@@ -89,7 +89,7 @@ const Contact = () => {
           <Typography 
             variant="h2" 
             gutterBottom 
-            className="text-shadow-md max-sm:!text-2xl max-sm:leading-tight"
+            className="mobile-animate-heading text-shadow-md max-sm:!text-2xl max-sm:leading-tight"
             sx={{ 
               fontWeight: 700,
               fontSize: { xs: '2.8rem', md: '4rem' },
@@ -124,7 +124,7 @@ const Contact = () => {
           <Grid item xs={12} md={7} className="max-sm:w-full">
             <Paper 
               elevation={12}
-              className="reveal-card"
+              className="mobile-animate-card"
               sx={{ 
                 p: { xs: 4, md: 6 }, 
                 borderRadius: 5,
@@ -280,7 +280,7 @@ const Contact = () => {
                     <Button
                       type="submit"
                       size="lg"
-                      className="w-full h-16 text-xl font-bold shadow-2xl hover:shadow-[0_20px_60px_rgba(59,130,246,0.4)] hover:scale-[1.02] transition-all max-sm:h-14 max-sm:text-base"
+                      className="mobile-animate-btn w-full h-16 text-xl font-bold shadow-2xl hover:shadow-[0_20px_60px_rgba(59,130,246,0.4)] hover:scale-[1.02] transition-all max-sm:h-14 max-sm:text-base"
                     >
                       <SendIcon className="ml-3" sx={{ fontSize: 28 }} />
                       שלח הודעה עכשיו
@@ -313,7 +313,7 @@ const Contact = () => {
           <Grid item xs={12} md={5} className="max-sm:w-full">
             <Stack spacing={4} className="max-sm:gap-4">
               <Box 
-                className="reveal-card"
+                className="mobile-animate-card"
                 sx={{ 
                   p: 4,
                   borderRadius: 4,
@@ -334,7 +334,7 @@ const Contact = () => {
               {contactInfo.map((info, index) => (
                 <Card 
                   key={index} 
-                  className="reveal-card p-6 hover:-translate-y-2 transition-all border-2 hover:border-[#3b82f6]"
+                  className="mobile-animate-card p-6 hover:-translate-y-2 transition-all border-2 hover:border-[#3b82f6]"
                   sx={{ 
                     borderColor: '#e2e8f0',
                     boxShadow: '0 4px 20px rgba(0,0,0,0.08)',

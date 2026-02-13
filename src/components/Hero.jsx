@@ -42,7 +42,7 @@ const Hero = () => {
   return (
     <Box
       id="home"
-      className="reveal-section mobile-hero-section max-sm:min-h-[60vh] sm:min-h-screen"
+      className="mobile-reveal-root mobile-hero-section max-sm:min-h-[60vh] sm:min-h-screen"
       sx={{
         minHeight: { xs: '60vh', sm: '100vh' },
         display: 'flex',
@@ -73,7 +73,7 @@ const Hero = () => {
             
             <Typography 
               variant="h1" 
-              className="mobile-h1 max-sm:!text-3xl sm:!text-5xl max-sm:leading-tight max-sm:mb-2"
+              className="mobile-animate-heading mobile-h1 max-sm:!text-3xl sm:!text-5xl max-sm:leading-tight max-sm:mb-2"
               sx={{ 
                 fontSize: { xs: '2.8rem', md: '4rem', lg: '4.5rem' },
                 fontWeight: 800,
@@ -88,7 +88,7 @@ const Hero = () => {
             
             <Typography 
               variant="h5" 
-              className="mobile-hero-subline max-sm:!text-base sm:!text-lg max-sm:mb-4 max-sm:leading-relaxed"
+              className="mobile-animate-body mobile-hero-subline max-sm:!text-base sm:!text-lg max-sm:mb-4 max-sm:leading-relaxed"
               sx={{ 
                 color: '#64748b',
                 mb: 5,
@@ -106,7 +106,7 @@ const Hero = () => {
               <Button 
                 asChild
                 size="lg"
-                className="mobile-btn-block bg-[#0f172a] text-white hover:bg-[#1e293b] hover:scale-105 shadow-lg hover:shadow-xl text-lg font-bold px-8 py-4 rounded-xl transition-all duration-300 max-sm:w-full max-sm:justify-center max-sm:text-base max-sm:py-3"
+                className="mobile-animate-btn mobile-btn-block bg-[#0f172a] text-white hover:bg-[#1e293b] hover:scale-105 shadow-lg hover:shadow-xl text-lg font-bold px-8 py-4 rounded-xl transition-all duration-300 max-sm:w-full max-sm:justify-center max-sm:text-base max-sm:py-3"
               >
                 <a 
                   href="https://wa.me/972525473560?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%99%D7%99%D7%A2%D7%95%D7%A5"
@@ -122,7 +122,7 @@ const Hero = () => {
                 <Button 
                   variant="outline"
                   size="lg"
-                  className="mobile-btn-block border-2 border-[#0f172a] text-[#0f172a] hover:bg-[#0f172a]/5 hover:scale-105 text-lg font-bold px-8 py-4 rounded-xl transition-all duration-300 max-sm:w-full max-sm:justify-center max-sm:text-base max-sm:py-3"
+                  className="mobile-animate-btn mobile-btn-block border-2 border-[#0f172a] text-[#0f172a] hover:bg-[#0f172a]/5 hover:scale-105 text-lg font-bold px-8 py-4 rounded-xl transition-all duration-300 max-sm:w-full max-sm:justify-center max-sm:text-base max-sm:py-3"
                 >
                   לצפייה בעבודות
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -132,7 +132,7 @@ const Hero = () => {
                 <Button 
                   variant="ghost"
                   size="lg"
-                  className="mobile-btn-block text-[#3b82f6] hover:bg-[#3b82f6]/10 text-base font-semibold py-3 max-sm:w-full max-sm:justify-center"
+                  className="mobile-animate-btn mobile-btn-block text-[#3b82f6] hover:bg-[#3b82f6]/10 text-base font-semibold py-3 max-sm:w-full max-sm:justify-center"
                 >
                   לדבר עכשיו →
                 </Button>
@@ -223,7 +223,7 @@ const Hero = () => {
         {/* Stats Cards - משודרגים; מובייל: carousel אופקי */}
         <Grid container spacing={3} sx={{ mt: 8 }} className="mobile-stats-carousel max-sm:mt-5 max-sm:gap-4">
           {stats.map((stat, index) => (
-            <Grid item xs={12} sm={4} key={index} className="reveal-card mobile-stats-slide max-sm:w-full">
+            <Grid item xs={12} sm={4} key={index} className="mobile-animate-card mobile-stats-slide max-sm:w-full">
               <Paper 
                 elevation={0}
                 sx={{ 

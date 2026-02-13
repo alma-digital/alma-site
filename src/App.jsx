@@ -47,28 +47,28 @@ function App() {
     return () => observerRef.current?.disconnect()
   }, [])
 
-  // Mobile-only (≤768px): Scroll Reveal — sections animate in once
-  const revealObserverRef = useRef(null)
+  // Mobile-only (≤768px): refined animation — trigger once when root enters view
+  const revealRootRef = useRef(null)
   useEffect(() => {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reducedMotion) {
-      document.querySelectorAll('.reveal-section').forEach((node) => node.classList.add('is-visible'))
+      document.querySelectorAll('.mobile-reveal-root').forEach((node) => node.classList.add('is-visible'))
       return
     }
-    revealObserverRef.current = new IntersectionObserver(
+    revealRootRef.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible')
-            revealObserverRef.current?.unobserve(entry.target)
+            revealRootRef.current?.unobserve(entry.target)
           }
         })
       },
-      { rootMargin: '0px 0px -60px 0px', threshold: 0.05 }
+      { rootMargin: '0px 0px -40px 0px', threshold: 0.08 }
     )
-    const sections = document.querySelectorAll('.reveal-section')
-    sections.forEach((s) => revealObserverRef.current?.observe(s))
-    return () => revealObserverRef.current?.disconnect()
+    const roots = document.querySelectorAll('.mobile-reveal-root')
+    roots.forEach((r) => revealRootRef.current?.observe(r))
+    return () => revealRootRef.current?.disconnect()
   }, [])
 
   return (

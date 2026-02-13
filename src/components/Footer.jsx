@@ -51,7 +51,7 @@ const Footer = () => {
           background: '#3b82f6',
         }
       }}
-      className="reveal-section mobile-footer-compact max-sm:pt-5 max-sm:pb-4"
+      className="mobile-reveal-root mobile-footer-compact max-sm:pt-5 max-sm:pb-4"
     >
       <Container maxWidth="lg" className="mobile-container max-sm:px-4">
         <Grid container spacing={6} className="max-sm:gap-6 max-sm:flex-col max-sm:text-center">
