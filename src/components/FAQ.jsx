@@ -1,4 +1,4 @@
-import { Box, Container, Typography } from '@mui/material'
+import { Box, Container, Typography, useMediaQuery, useTheme } from '@mui/material'
 import { HelpCircle } from 'lucide-react'
 import { Badge } from './ui/badge'
 
@@ -26,17 +26,21 @@ const faqItems = [
 ]
 
 const FAQ = () => {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down(768))
   return (
-    <Box id="faq" sx={{ py: 12, bgcolor: '#f8fafc' }} className="mobile-reveal-root mobile-section-spacing-lg">
+    <Box id="faq" sx={{ py: 12, bgcolor: '#f8fafc' }} className="mobile-reveal-root mobile-section-spacing-lg mobile-section-root">
       <Container maxWidth="lg" className="mobile-container" sx={{ px: { xs: 2, md: 3 } }}>
-        <Box sx={{ textAlign: 'center', mb: 6 }} className="mobile-section-spacing">
-          <Badge variant="secondary" className="mb-4 text-lg font-bold py-3 px-4 mobile-hero-badge">
+        <Box sx={{ textAlign: 'center', mb: 6 }} className="mobile-section-header">
+          <Badge variant="secondary" className="mb-4 text-lg font-bold py-3 px-4 mobile-hero-badge mobile-section-badge">
             <HelpCircle className="ml-2 h-5 w-5" />
             שאלות נפוצות
           </Badge>
-          <Typography variant="h2" className="mobile-animate-heading mobile-h2" sx={{ fontWeight: 700, mb: 2, color: 'var(--color-heading)' }}>
-            שאלות נפוצות
-          </Typography>
+          {!isMobile && (
+            <Typography variant="h2" className="mobile-animate-heading mobile-h2" sx={{ fontWeight: 700, mb: 2, color: 'var(--color-heading)' }}>
+              שאלות נפוצות
+            </Typography>
+          )}
         </Box>
 
         <Box className="desktop-only" sx={{ maxWidth: 640, mx: 'auto' }}>

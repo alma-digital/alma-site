@@ -104,38 +104,41 @@ const Services = () => {
   ]
 
   return (
-    <Box id="services" sx={{ py: 12, bgcolor: 'white' }} className="mobile-reveal-root max-sm:py-6">
+    <Box id="services" sx={{ py: 12, bgcolor: 'white' }} className="mobile-reveal-root max-sm:py-6 mobile-section-root">
       <Container maxWidth="lg" className="max-sm:px-4">
-        <Box sx={{ textAlign: 'center', mb: 8 }} className="max-sm:mb-5 max-sm:text-center">
-          <Badge variant="secondary" className="mb-8 text-lg font-bold py-3 px-4 max-sm:mb-6 max-sm:text-base max-sm:py-2 max-sm:px-3">
+        <Box sx={{ textAlign: 'center', mb: 8 }} className="max-sm:mb-8 max-sm:text-center mobile-section-header">
+          <Badge variant="secondary" className="mb-8 text-lg font-bold py-3 px-4 max-sm:text-base max-sm:py-2 max-sm:px-3 mobile-section-badge">
             <Briefcase className="ml-2 h-6 w-6" />
             שירותים
           </Badge>
-          <Typography 
-            variant="h2" 
-            gutterBottom 
-            className="mobile-animate-heading max-sm:!text-2xl max-sm:leading-tight"
-            sx={{ 
-              fontWeight: 700,
-              fontSize: { xs: '2.8rem', md: '4rem' },
-              mb: 3,
-              letterSpacing: '-0.02em',
-              lineHeight: 1.3,
-              color: 'var(--color-heading)'
-            }}
-          >
-            השירותים שלי
-          </Typography>
+          {!isMobile && (
+            <Typography 
+              variant="h2" 
+              gutterBottom 
+              className="mobile-animate-heading max-sm:!text-2xl max-sm:leading-tight"
+              sx={{ 
+                fontWeight: 700,
+                fontSize: { xs: '2.8rem', md: '4rem' },
+                mb: 3,
+                letterSpacing: '-0.02em',
+                lineHeight: 1.3,
+                color: 'var(--color-heading)'
+              }}
+            >
+              השירותים שלי
+            </Typography>
+          )}
           <Typography 
             variant="h5" 
-            className="mobile-animate-body max-sm:!text-base"
+            className="mobile-animate-body max-sm:!text-base mobile-section-desc"
             sx={{ 
               maxWidth: 700, 
               mx: 'auto',
               fontSize: { xs: '1.25rem', md: '1.45rem' },
               fontWeight: 400,
               lineHeight: 1.75,
-              color: '#64748b'
+              color: '#64748b',
+              ...(isMobile && { mt: 0, mb: 0 })
             }}
           >
             שירותים ממוקדים שמביאים תוצאות - בלי רעש מיותר.

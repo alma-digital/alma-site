@@ -13,6 +13,8 @@ import {
   Security,
   SupportAgent
 } from '@mui/icons-material'
+import { Sparkles } from 'lucide-react'
+import { Badge } from './ui/badge'
 
 const Features = () => {
   const features = [
@@ -47,7 +49,7 @@ const Features = () => {
   ]
 
   return (
-    <Box id="features" sx={{ py: 10, bgcolor: '#ffffff' }} className="mobile-reveal-root max-sm:py-6 mobile-section-spacing">
+    <Box id="features" sx={{ py: 10, bgcolor: '#ffffff' }} className="mobile-reveal-root max-sm:py-6 mobile-section-spacing mobile-section-root">
       <div className="desktop-only">
         {/* Header Bar */}
         <Box 
@@ -134,9 +136,12 @@ const Features = () => {
       {/* מובייל בלבד: אקורדיון */}
       <div className="mobile-only">
         <div className="mobile-container">
-          <Typography variant="h2" className="mobile-h2" sx={{ textAlign: 'center', mb: 2, color: '#3b82f6' }}>
-            רק פה אתם מקבלים
-          </Typography>
+          <Box sx={{ textAlign: 'center' }} className="mobile-section-header">
+            <Badge variant="secondary" className="mobile-section-badge">
+              <Sparkles className="ml-2 h-5 w-5" />
+              רק פה אתם מקבלים
+            </Badge>
+          </Box>
           {features.map((feature, index) => (
             <details key={index} className="mobile-animate-card mobile-accordion-item">
               <summary>

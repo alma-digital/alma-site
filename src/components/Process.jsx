@@ -3,7 +3,9 @@ import {
   Container,
   Typography,
   Avatar,
-  Stack
+  Stack,
+  useMediaQuery,
+  useTheme
 } from '@mui/material'
 import {
   Chat,
@@ -16,6 +18,8 @@ import { Badge } from './ui/badge'
 import { Card, CardContent } from './ui/card'
 
 const Process = () => {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down(768))
   const steps = [
     {
       num: '01',
@@ -48,42 +52,46 @@ const Process = () => {
   ]
 
   return (
-    <Box id="process" sx={{ py: 12, bgcolor: '#ffffff', position: 'relative', overflow: 'hidden' }} className="mobile-reveal-root max-sm:py-6 mobile-animate-in">
+    <Box id="process" sx={{ py: 12, bgcolor: '#ffffff', position: 'relative', overflow: 'hidden' }} className="mobile-reveal-root max-sm:py-6 mobile-animate-in mobile-section-root">
       <Container maxWidth="lg" className="mobile-container max-sm:px-4">
-        <Box sx={{ textAlign: 'center', mb: 10 }} className="max-sm:mb-5 max-sm:text-center">
-          <Badge variant="default" className="mb-8 text-lg font-bold py-3 px-4 max-sm:mb-4 max-sm:text-base max-sm:py-2 max-sm:px-3">
+        <Box sx={{ textAlign: 'center', mb: 10 }} className="max-sm:text-center mobile-section-header">
+          <Badge variant="secondary" className="mb-8 text-lg font-bold py-3 px-4 max-sm:text-base max-sm:py-2 max-sm:px-3 mobile-section-badge">
             <Workflow className="ml-2 h-6 w-6" />
             התהליך
           </Badge>
-          <Typography 
-            variant="h2" 
-            gutterBottom 
-            className="mobile-animate-heading max-sm:!text-2xl max-sm:leading-tight"
-            sx={{ 
-              fontWeight: 700,
-              fontSize: { xs: '2.8rem', md: '4rem' },
-              mb: 3,
-              letterSpacing: '-0.02em',
-              lineHeight: 1.3,
-              color: 'var(--color-heading)'
-            }}
-          >
-            תהליך עבודה ברור
-          </Typography>
-          <Typography 
-            variant="h5" 
-            className="max-sm:!text-base"
-            sx={{ 
-              maxWidth: 700, 
-              mx: 'auto',
-              fontSize: { xs: '1.25rem', md: '1.45rem' },
-              fontWeight: 400,
-              lineHeight: 1.75,
-              color: '#64748b'
-            }}
-          >
-            תהליך קצר, ברור ויעיל - בלי כאב ראש.
-          </Typography>
+          {!isMobile && (
+            <>
+              <Typography 
+                variant="h2" 
+                gutterBottom 
+                className="mobile-animate-heading max-sm:!text-2xl max-sm:leading-tight"
+                sx={{ 
+                  fontWeight: 700,
+                  fontSize: { xs: '2.8rem', md: '4rem' },
+                  mb: 3,
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1.3,
+                  color: 'var(--color-heading)'
+                }}
+              >
+                תהליך עבודה ברור
+              </Typography>
+              <Typography 
+                variant="h5" 
+                className="max-sm:!text-base"
+                sx={{ 
+                  maxWidth: 700, 
+                  mx: 'auto',
+                  fontSize: { xs: '1.25rem', md: '1.45rem' },
+                  fontWeight: 400,
+                  lineHeight: 1.75,
+                  color: '#64748b'
+                }}
+              >
+                תהליך קצר, ברור ויעיל - בלי כאב ראש.
+              </Typography>
+            </>
+          )}
         </Box>
 
         <Box sx={{ maxWidth: 900, mx: 'auto' }} className="max-sm:w-full">

@@ -39,14 +39,14 @@ const StickyCtaBar = () => {
 
   return (
     <div
-      className={`fixed bottom-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`mobile-cta-bar-wrap fixed bottom-0 left-0 right-0 z-50 transition-all duration-500 ${
         showBar ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
       }`}
       style={{ 
         pointerEvents: showBar ? 'auto' : 'none'
       }}
     >
-      {/* Mobile: always visible + safe-area; Desktop: show after scroll */}
+      {/* Mobile: glass effect; Desktop: gradient */}
       <div 
         className="mobile-cta-card bg-gradient-to-l from-[#0f172a] via-[#1e293b] to-[#0f172a] border-t-4 border-[#3b82f6] shadow-2xl max-w-[100vw] overflow-x-hidden"
         style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}

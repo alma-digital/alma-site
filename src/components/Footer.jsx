@@ -1,3 +1,4 @@
+import { useRef, useEffect, useState } from 'react'
 import {
   Box,
   Container,
@@ -17,7 +18,62 @@ import {
 } from '@mui/icons-material'
 import { Link } from 'react-scroll'
 
+const MOBILE_BREAKPOINT = 768
+
 const Footer = () => {
+  const footerRef = useRef(null)
+  const [revealed, setRevealed] = useState(false)
+  const footerTopRef = useRef(null)
+
+  useEffect(() => {
+    const footer = footerRef.current
+    if (!footer) return
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reducedMotion) {
+      setRevealed(true)
+      return
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setRevealed(true)
+          footerTopRef.current = footer.getBoundingClientRect().top + window.scrollY
+          observer.disconnect()
+        }
+      },
+      { rootMargin: '0px 0px -60px 0px', threshold: 0 }
+    )
+    observer.observe(footer)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || window.innerWidth > MOBILE_BREAKPOINT) return
+    const footer = footerRef.current
+    if (!footer) return
+    let rafId = null
+    const handleScroll = () => {
+      if (rafId) return
+      rafId = requestAnimationFrame(() => {
+        const rect = footer.getBoundingClientRect()
+        const viewportH = window.innerHeight
+        if (rect.top > viewportH) {
+          footer.style.setProperty('--parallax-y', '0')
+        } else {
+          const y = (viewportH - rect.top) * 0.04
+          footer.style.setProperty('--parallax-y', `${Math.round(y)}`)
+        }
+        rafId = null
+      })
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      if (rafId) cancelAnimationFrame(rafId)
+    }
+  }, [])
+
   const links = [
     { label: 'בית', to: 'home' },
     { label: 'קצת עליי', to: 'about' },
@@ -34,6 +90,7 @@ const Footer = () => {
 
   return (
     <Box 
+      ref={footerRef}
       component="footer" 
       sx={{ 
         background: '#0f172a',
@@ -41,6 +98,7 @@ const Footer = () => {
         pt: 8,
         pb: 4,
         position: 'relative',
+        overflow: 'hidden',
         '&::before': {
           content: '""',
           position: 'absolute',
@@ -51,12 +109,13 @@ const Footer = () => {
           background: '#3b82f6',
         }
       }}
-      className="mobile-reveal-root mobile-footer-compact max-sm:pt-5 max-sm:pb-4"
+      className={`mobile-reveal-root mobile-footer-compact max-sm:pt-5 max-sm:pb-4 ${revealed ? 'footer-revealed' : ''}`}
     >
-      <Container maxWidth="lg" className="mobile-container max-sm:px-4">
-        <Grid container spacing={6} className="max-sm:gap-6 max-sm:flex-col max-sm:text-center">
-          {/* Brand */}
-          <Grid item xs={12} md={4} className="max-sm:w-full max-sm:flex max-sm:flex-col max-sm:items-center">
+      <div className="footer-parallax-layer" aria-hidden="true" />
+      <Container maxWidth="lg" className="mobile-container max-sm:px-4" style={{ position: 'relative', zIndex: 1 }}>
+        <Grid container spacing={6} className="footer-mobile-grid max-sm:gap-6 max-sm:flex-col max-sm:text-center">
+          {/* Block 1: Brand + description + social */}
+          <Grid item xs={12} md={4} className="footer-mobile-block footer-mobile-block-1 max-sm:w-full max-sm:flex max-sm:flex-col max-sm:items-center">
             <Box 
               sx={{ 
                 height: 50,
@@ -93,7 +152,7 @@ const Footer = () => {
               בונים פתרונות דיגיטליים שמניבים תוצאות אמיתיות.
             </Typography>
             
-            <Stack direction="row" spacing={1} className="max-sm:justify-center">
+            <Stack direction="row" spacing={1} className="footer-mobile-social max-sm:justify-center">
               {socialLinks.map((social, index) => (
                 <IconButton
                   key={index}
@@ -117,8 +176,8 @@ const Footer = () => {
             </Stack>
           </Grid>
 
-          {/* Quick Links */}
-          <Grid item xs={12} sm={6} md={4} className="max-sm:w-full max-sm:flex max-sm:flex-col max-sm:items-center">
+          {/* Block 2: Quick links */}
+          <Grid item xs={12} sm={6} md={4} className="footer-mobile-block footer-mobile-block-2 max-sm:w-full max-sm:flex max-sm:flex-col max-sm:items-center">
             <Typography 
               variant="h6" 
               gutterBottom 
@@ -127,7 +186,7 @@ const Footer = () => {
                 mb: 3,
                 fontSize: '1.3rem'
               }}
-              className="max-sm:!text-lg"
+              className="footer-mobile-links-title max-sm:!text-lg"
             >
               קישורים מהירים
             </Typography>
@@ -164,8 +223,8 @@ const Footer = () => {
             </Stack>
           </Grid>
 
-          {/* Contact Info */}
-          <Grid item xs={12} sm={6} md={4} className="max-sm:w-full max-sm:flex max-sm:flex-col max-sm:items-center">
+          {/* Block 3: Contact */}
+          <Grid item xs={12} sm={6} md={4} className="footer-mobile-block footer-mobile-block-3 max-sm:w-full max-sm:flex max-sm:flex-col max-sm:items-center">
             <Typography 
               variant="h6" 
               gutterBottom 

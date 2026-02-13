@@ -7,7 +7,9 @@ import {
   Avatar,
   Alert,
   Paper,
-  Stack
+  Stack,
+  useMediaQuery,
+  useTheme
 } from '@mui/material'
 import {
   Email,
@@ -23,6 +25,8 @@ import { Badge } from './ui/badge'
 import { Card, CardContent } from './ui/card'
 
 const Contact = () => {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down(768))
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -78,40 +82,43 @@ const Contact = () => {
         background: '#ffffff',
         position: 'relative'
       }}
-      className="mobile-reveal-root max-sm:py-6"
+      className="mobile-reveal-root max-sm:py-6 mobile-section-root"
     >
       <Container maxWidth="lg" className="max-sm:px-4">
-        <Box sx={{ textAlign: 'center', mb: 8 }} className="contact-header max-sm:mb-5 max-sm:text-center">
-          <Badge variant="secondary" className="contact-badge-desktop mb-8 text-lg font-bold py-3 px-4 max-sm:mb-4 max-sm:text-base max-sm:py-2 max-sm:px-3">
+        <Box sx={{ textAlign: 'center', mb: 8 }} className="contact-header max-sm:mb-5 max-sm:text-center mobile-section-header">
+          <Badge variant="secondary" className="contact-badge-desktop mb-8 text-lg font-bold py-3 px-4 max-sm:text-base max-sm:py-2 max-sm:px-3 mobile-section-badge">
             <Mail className="ml-2 h-6 w-6" />
             צור קשר
           </Badge>
-          <Typography 
-            variant="h2" 
-            gutterBottom 
-            className="contact-heading-mobile-hide mobile-animate-heading text-shadow-md max-sm:!text-2xl max-sm:leading-tight"
-            sx={{ 
-              fontWeight: 700,
-              fontSize: { xs: '2.8rem', md: '4rem' },
-              mb: 3,
-              letterSpacing: '-0.02em',
-              lineHeight: 1.3,
-              color: 'var(--color-heading)'
-            }}
-          >
-            בוא נבנה משהו חזק
-          </Typography>
+          {!isMobile && (
+            <Typography 
+              variant="h2" 
+              gutterBottom 
+              className="contact-heading-mobile-hide mobile-animate-heading text-shadow-md max-sm:!text-2xl max-sm:leading-tight"
+              sx={{ 
+                fontWeight: 700,
+                fontSize: { xs: '2.8rem', md: '4rem' },
+                mb: 3,
+                letterSpacing: '-0.02em',
+                lineHeight: 1.3,
+                color: 'var(--color-heading)'
+              }}
+            >
+              בוא נבנה משהו חזק
+            </Typography>
+          )}
           <Typography 
             variant="h5" 
             color="text.secondary" 
-            className="contact-subtitle-desktop text-shadow-sm max-sm:!text-base"
+            className="contact-subtitle-desktop text-shadow-sm max-sm:!text-base mobile-section-desc"
             sx={{ 
               maxWidth: 700, 
               mx: 'auto',
               fontSize: { xs: '1.25rem', md: '1.45rem' },
               fontWeight: 400,
               lineHeight: 1.75,
-              color: '#64748b'
+              color: '#64748b',
+              ...(isMobile && { mt: 0, mb: 0 })
             }}
           >
             ספר לי על העסק שלך ומה אתה רוצה להשיג -
@@ -222,7 +229,7 @@ const Contact = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         required
-                        placeholder="0525473560"
+                        placeholder="הכנס מספר טלפון"
                         className="h-14 text-lg border-[3px] border-[#667eea] focus:border-[#764ba2] transition-all shadow-md"
                       />
                     </Box>

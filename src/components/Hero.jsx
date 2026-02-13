@@ -205,10 +205,10 @@ const Hero = () => {
             
             <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, mb: 6 }} className="hero-buttons mobile-hero-buttons max-sm:flex-col max-sm:items-center max-sm:gap-3 max-sm:mb-5">
               <div className="max-sm:block hidden mobile-cta-primary-wrap w-full max-w-[320px]">
-                <p className="mobile-cta-urgency text-center text-sm mt-2 opacity-80" aria-hidden="true">מקומות מוגבלים החודש</p>
-                <p className="mobile-cta-trust text-center text-xs mt-1 opacity-70 flex items-center justify-center gap-1" aria-hidden="true">
-                  <Verified sx={{ fontSize: 14 }} /> תשובה תוך 24 שעות
-                </p>
+                <span className="mobile-trust-badge" aria-hidden="true">
+                  <Verified sx={{ fontSize: 16 }} />
+                  <span>תשובה תוך 24 שעות</span>
+                </span>
               </div>
               <Button 
                 asChild

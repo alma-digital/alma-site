@@ -7,7 +7,7 @@ import {
   useMediaQuery,
   useTheme
 } from '@mui/material'
-import { Quote, ChevronRight, ChevronLeft, Star, ArrowLeft } from 'lucide-react'
+import { Quote, ChevronRight, ChevronLeft, Star, ArrowLeft, MessageCircle } from 'lucide-react'
 import { Card, CardContent } from './ui/card'
 import { Badge } from './ui/badge'
 import { Button } from './ui/button'
@@ -132,35 +132,43 @@ const Testimonials = () => {
   ]
 
   return (
-    <Box id="testimonials" sx={{ py: 12, bgcolor: '#f8fafc' }} className="mobile-reveal-root max-sm:py-6">
+    <Box id="testimonials" sx={{ py: 12, bgcolor: '#f8fafc' }} className="mobile-reveal-root max-sm:py-6 mobile-section-root">
       <Container maxWidth="lg" className="max-sm:px-4">
         {/* Header */}
-        <Box sx={{ textAlign: 'center', mb: 10 }} className="max-sm:mb-5 max-sm:text-center">
-          <Typography 
-            variant="h2" 
-            gutterBottom 
-            className="mobile-animate-heading max-sm:!text-2xl max-sm:leading-tight"
-            sx={{ 
-              fontWeight: 700,
-              fontSize: { xs: '2.8rem', md: '4rem' },
-              mb: 3,
-              letterSpacing: '-0.02em',
-              lineHeight: 1.3,
-              color: 'var(--color-heading)'
-            }}
-          >
-            לקוחות מספרים
-          </Typography>
+        <Box sx={{ textAlign: 'center', mb: 10 }} className="max-sm:mb-5 max-sm:text-center mobile-section-header">
+          {isMobile ? (
+            <Badge variant="secondary" className="mb-8 text-lg font-bold py-3 px-4 max-sm:text-base max-sm:py-2 max-sm:px-3 mobile-section-badge">
+              <MessageCircle className="ml-2 h-6 w-6" />
+              לקוחות מספרים
+            </Badge>
+          ) : (
+            <Typography 
+              variant="h2" 
+              gutterBottom 
+              className="mobile-animate-heading max-sm:!text-2xl max-sm:leading-tight"
+              sx={{ 
+                fontWeight: 700,
+                fontSize: { xs: '2.8rem', md: '4rem' },
+                mb: 3,
+                letterSpacing: '-0.02em',
+                lineHeight: 1.3,
+                color: 'var(--color-heading)'
+              }}
+            >
+              לקוחות מספרים
+            </Typography>
+          )}
           <Typography 
             variant="h5" 
-            className="max-sm:!text-base"
+            className="max-sm:!text-base mobile-section-desc"
             sx={{ 
               maxWidth: 800, 
               mx: 'auto',
               fontSize: { xs: '1.1rem', md: '1.3rem' },
               fontWeight: 400,
               lineHeight: 1.75,
-              color: '#64748b'
+              color: '#64748b',
+              ...(isMobile && { mt: 0, mb: 0 })
             }}
           >
             עסקים שרצו אתר רציני וקיבלו תוצאה בהתאם.
