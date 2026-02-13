@@ -1,10 +1,13 @@
+import { useEffect, useState } from 'react'
 import {
   Box,
   Container,
   Typography,
   Grid,
   CardContent,
-  Paper
+  Paper,
+  useMediaQuery,
+  useTheme
 } from '@mui/material'
 import {
   TrendingUp,
@@ -16,8 +19,46 @@ import { ArrowRight, Sparkles } from 'lucide-react'
 import { Link } from 'react-scroll'
 import { Button } from './ui/button'
 import { Badge } from './ui/badge'
+import useEmblaCarousel from 'embla-carousel-react'
+import { usePremiumCarouselAutoplay, PREMIUM_DURATION } from '../hooks/usePremiumCarouselAutoplay'
+
+const AUTOPLAY_DELAY_MS = 3000
 
 const Hero = () => {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down(768))
+  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [progress, setProgress] = useState(0)
+
+  const statsEmblaOptions = {
+    align: 'center',
+    direction: 'rtl',
+    loop: true,
+    duration: PREMIUM_DURATION,
+    slidesToScroll: 1,
+    breakpoints: { '(min-width: 769px)': { active: false } }
+  }
+  const [statsEmblaRef, statsEmblaApi] = useEmblaCarousel(statsEmblaOptions, [])
+  usePremiumCarouselAutoplay(statsEmblaApi, isMobile)
+
+  useEffect(() => {
+    if (!statsEmblaApi) return
+    const onSelect = () => setSelectedIndex(statsEmblaApi.selectedScrollSnap())
+    onSelect()
+    statsEmblaApi.on('select', onSelect)
+    return () => statsEmblaApi.off('select', onSelect)
+  }, [statsEmblaApi])
+
+  useEffect(() => {
+    if (!isMobile) return
+    const start = Date.now()
+    const t = setInterval(() => {
+      const elapsed = (Date.now() - start) % AUTOPLAY_DELAY_MS
+      setProgress(elapsed / AUTOPLAY_DELAY_MS)
+    }, 50)
+    return () => clearInterval(t)
+  }, [isMobile, selectedIndex])
+
   const stats = [
     { 
       number: '20+', 
@@ -64,27 +105,37 @@ const Hero = () => {
     >
       <Container maxWidth="lg" className="mobile-container max-sm:px-4 max-sm:py-6 sm:py-8" sx={{ position: 'relative', zIndex: 1, py: 8 }}>
         <Grid container spacing={8} alignItems="center" className="max-sm:flex-col max-sm:gap-4 sm:gap-8">
-          {/* Content */}
-          <Grid item xs={12} md={6} className="max-sm:order-2 max-sm:text-center max-sm:w-full mobile-animate-in">
+          {/* Content - on mobile: logo inline, then heading, subtitle, badge, body, CTA */}
+          <Grid item xs={12} md={6} className="max-sm:order-1 max-sm:text-center max-sm:w-full mobile-animate-in mobile-hero-premium-wrap hero-content-mobile">
+            <div className="mobile-hero-logo-inline logo-mobile logo-inline-mobile max-sm:block hidden">
+              <img src="/logo.png" alt="Alma Digital" />
+            </div>
+            <div className="hero-title-row">
+              <Typography 
+                variant="h1" 
+                className="hero-title mobile-animate-heading mobile-h1 max-sm:!text-3xl sm:!text-5xl max-sm:leading-tight max-sm:mb-2"
+                sx={{ 
+                  fontSize: { xs: '2.8rem', md: '4rem', lg: '4.5rem' },
+                  fontWeight: 800,
+                  color: 'var(--color-heading)',
+                  mb: 2,
+                  lineHeight: 1.15,
+                  letterSpacing: '-0.03em'
+                }}
+              >
+                <span className="hero-title-highlight">
+                  <span className="max-sm:inline sm:hidden">בונה אתרים שמביאים לקוחות.</span>
+                  <span className="hidden sm:inline">אתרי תדמית ודפי נחיתה שמביאים לקוחות.</span>
+                </span>
+              </Typography>
+            </div>
+            <p className="hero-subtitle mobile-hero-subtitle-line max-sm:block hidden">
+              פיתוח אתרים מהיר ומדויק לעסקים שרוצים תוצאות
+            </p>
             <Badge variant="secondary" className="mobile-hero-badge mb-8 text-base font-semibold py-2 px-4 max-sm:mb-4 max-sm:text-sm max-sm:py-1.5 max-sm:px-3">
               <Sparkles className="ml-2 h-5 w-5" />
               דפי נחיתה לעסקים קטנים
             </Badge>
-            
-            <Typography 
-              variant="h1" 
-              className="mobile-animate-heading mobile-h1 max-sm:!text-3xl sm:!text-5xl max-sm:leading-tight max-sm:mb-2"
-              sx={{ 
-                fontSize: { xs: '2.8rem', md: '4rem', lg: '4.5rem' },
-                fontWeight: 800,
-                color: 'var(--color-heading)',
-                mb: 2,
-                lineHeight: 1.15,
-                letterSpacing: '-0.03em'
-              }}
-            >
-              אתרי תדמית ודפי נחיתה שמביאים לקוחות.
-            </Typography>
             
             <Typography 
               variant="h5" 
@@ -102,7 +153,7 @@ const Hero = () => {
               המטרה ברורה: יותר פניות, יותר אמון, יותר תוצאות.
             </Typography>
             
-            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, mb: 6 }} className="mobile-hero-buttons max-sm:flex-col max-sm:items-center max-sm:gap-3 max-sm:mb-5">
+            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, mb: 6 }} className="hero-buttons mobile-hero-buttons max-sm:flex-col max-sm:items-center max-sm:gap-3 max-sm:mb-5">
               <Button 
                 asChild
                 size="lg"
@@ -117,12 +168,11 @@ const Hero = () => {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </a>
               </Button>
-              
               <Link to="services" spy={true} smooth={true} offset={-70} duration={500} className="max-sm:w-full">
                 <Button 
                   variant="outline"
                   size="lg"
-                  className="mobile-animate-btn mobile-btn-block border-2 border-[#0f172a] text-[#0f172a] hover:bg-[#0f172a]/5 hover:scale-105 text-lg font-bold px-8 py-4 rounded-xl transition-all duration-300 max-sm:w-full max-sm:justify-center max-sm:text-base max-sm:py-3"
+                  className="mobile-animate-btn mobile-btn-block mobile-hero-secondary-btn border-2 border-[#0f172a] text-[#0f172a] hover:bg-[#0f172a]/5 hover:scale-105 text-lg font-bold px-8 py-4 rounded-xl transition-all duration-300 max-sm:w-full max-sm:justify-center max-sm:text-base max-sm:py-3"
                 >
                   לצפייה בעבודות
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -137,16 +187,17 @@ const Hero = () => {
                   לדבר עכשיו →
                 </Button>
               </Link>
-              <div className="mobile-trust-row mobile-only">
-                <span>✓ קוד נקי</span>
-                <span>✓ תמיכה</span>
-                <span>✓ תוצאות</span>
-              </div>
             </Box>
+            <div className="mobile-trust-strip max-sm:block hidden">
+              <div className="trust-item">⚡ קוד נקי</div>
+              <div className="trust-item">🚀 מהירות גבוהה</div>
+              <div className="trust-item">📱 מותאם למובייל</div>
+              <div className="trust-item">🎯 ממוקד תוצאות</div>
+            </div>
           </Grid>
 
-          {/* Visual */}
-          <Grid item xs={12} md={6} className="max-sm:order-1 max-sm:flex max-sm:justify-center max-sm:w-full">
+          {/* Visual - desktop only; on mobile logo is inline above heading */}
+          <Grid item xs={12} md={6} className="max-sm:order-2 max-sm:hidden sm:flex sm:justify-center sm:w-full mobile-hero-logo-bg">
             <Box
               sx={{
                 position: 'relative',
@@ -155,9 +206,10 @@ const Hero = () => {
                 alignItems: 'center',
                 height: '100%'
               }}
-              className="max-sm:w-full max-sm:max-w-[260px] sm:max-w-[420px]"
+              className="max-sm:w-full max-sm:max-w-[260px] sm:max-w-[420px] mobile-hero-logo-outer"
             >
               <Box
+                className="mobile-hero-logo-wrap"
                 sx={{
                   position: 'relative',
                   width: '100%',
@@ -220,11 +272,15 @@ const Hero = () => {
           </Grid>
         </Grid>
 
-        {/* Stats Cards - משודרגים; מובייל: carousel אופקי */}
-        <Grid container spacing={3} sx={{ mt: 8 }} className="mobile-stats-carousel max-sm:mt-5 max-sm:gap-4">
-          {stats.map((stat, index) => (
-            <Grid item xs={12} sm={4} key={index} className="mobile-animate-card mobile-stats-slide max-sm:w-full">
-              <Paper 
+        {/* Stats Cards - מובייל: premium carousel (depth + autoplay) */}
+        <div ref={statsEmblaRef} className="mobile-stats-carousel embla-premium" style={{ marginTop: 32 }}>
+          <div className="embla-premium__container">
+            {stats.map((stat, index) => (
+              <div
+                key={index}
+                className={`embla-premium__slide mobile-animate-card mobile-stats-slide ${selectedIndex === index ? 'is-center' : ''}`}
+              >
+                <Paper 
                 className="mobile-stat-card"
                 elevation={0}
                 sx={{ 
@@ -313,9 +369,28 @@ const Hero = () => {
                   </Box>
                 </CardContent>
               </Paper>
-            </Grid>
-          ))}
-        </Grid>
+              </div>
+            ))}
+          </div>
+          <div className="embla-premium-dots max-sm:flex sm:hidden" role="tablist" aria-label="בחירת סטטיסטיקה">
+            {stats.map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                role="tab"
+                aria-selected={selectedIndex === index}
+                aria-label={`סטטיסטיקה ${index + 1}`}
+                className="embla-premium-dot"
+                onClick={() => statsEmblaApi?.scrollTo(index)}
+              >
+                <span
+                  className="embla-premium-dot__progress"
+                  style={{ transform: `scaleX(${selectedIndex === index ? progress : 0})` }}
+                />
+              </button>
+            ))}
+          </div>
+        </div>
       </Container>
     </Box>
   )

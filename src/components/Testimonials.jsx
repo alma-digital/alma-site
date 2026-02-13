@@ -1,9 +1,11 @@
-import { useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import {
   Box,
   Container,
   Typography,
-  IconButton
+  IconButton,
+  useMediaQuery,
+  useTheme
 } from '@mui/material'
 import { Quote, ChevronRight, ChevronLeft, Star, ArrowLeft } from 'lucide-react'
 import { Card, CardContent } from './ui/card'
@@ -11,21 +13,51 @@ import { Badge } from './ui/badge'
 import { Button } from './ui/button'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
+import { usePremiumCarouselAutoplay, PREMIUM_DURATION } from '../hooks/usePremiumCarouselAutoplay'
+
+const AUTOPLAY_DELAY_MS = 3000
 
 const Testimonials = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    {
-      align: 'start',
-      direction: 'rtl',
-      loop: true,
-      slidesToScroll: 1,
-      breakpoints: {
-        '(min-width: 768px)': { slidesToScroll: 1 },
-        '(min-width: 1024px)': { slidesToScroll: 1 }
-      }
-    },
-    [Autoplay({ delay: 5500, stopOnInteraction: true, stopOnMouseEnter: true })]
-  )
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down(768))
+
+  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [progress, setProgress] = useState(0)
+
+  const emblaOptions = {
+    align: isMobile ? 'center' : 'start',
+    direction: 'rtl',
+    loop: true,
+    slidesToScroll: 1,
+    duration: isMobile ? PREMIUM_DURATION : 25,
+    breakpoints: {
+      '(min-width: 769px)': { align: 'start', duration: 25 },
+      '(min-width: 1024px)': { slidesToScroll: 1 }
+    }
+  }
+  const plugins = isMobile ? [] : [Autoplay({ delay: 5500, stopOnInteraction: true, stopOnMouseEnter: true })]
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(emblaOptions, plugins)
+
+  usePremiumCarouselAutoplay(emblaApi, isMobile)
+
+  useEffect(() => {
+    if (!emblaApi) return
+    const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap())
+    onSelect()
+    emblaApi.on('select', onSelect)
+    return () => emblaApi.off('select', onSelect)
+  }, [emblaApi])
+
+  useEffect(() => {
+    if (!isMobile) return
+    const start = Date.now()
+    const t = setInterval(() => {
+      const elapsed = (Date.now() - start) % AUTOPLAY_DELAY_MS
+      setProgress(elapsed / AUTOPLAY_DELAY_MS)
+    }, 50)
+    return () => clearInterval(t)
+  }, [isMobile, selectedIndex])
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev()
@@ -188,13 +220,16 @@ const Testimonials = () => {
             </IconButton>
           </Box>
 
-          {/* Embla Carousel - Added padding-top to prevent Quote icon clipping */}
-          <div className="overflow-hidden pt-6 max-sm:overflow-x-hidden max-sm:max-w-[100vw]" ref={emblaRef}>
-            <div className="flex" style={{ direction: 'rtl' }}>
+          {/* Embla Carousel - Premium on mobile (viewport + container for depth/3D) */}
+          <div
+            className="embla-premium overflow-hidden pt-6 max-sm:overflow-x-hidden max-sm:max-w-[100vw]"
+            ref={emblaRef}
+          >
+            <div className="embla-premium__container flex" style={{ direction: 'rtl' }}>
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className="mobile-animate-card flex-[0_0_100%] min-w-0 px-3 max-sm:px-4 md:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
+                  className={`embla-premium__slide mobile-animate-card flex-[0_0_100%] min-w-0 px-3 max-sm:px-4 md:flex-[0_0_50%] lg:flex-[0_0_33.333%] ${selectedIndex === index ? 'is-center' : ''}`}
                   style={{ direction: 'rtl' }}
                 >
                   <Card 
@@ -297,6 +332,26 @@ const Testimonials = () => {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Premium dots + progress (mobile only) */}
+          <div className="embla-premium-dots max-sm:flex sm:hidden" role="tablist" aria-label="בחירת המלצה">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                role="tab"
+                aria-selected={selectedIndex === index}
+                aria-label={`המלצה ${index + 1}`}
+                className="embla-premium-dot"
+                onClick={() => emblaApi?.scrollTo(index)}
+              >
+                <span
+                  className="embla-premium-dot__progress"
+                  style={{ transform: `scaleX(${selectedIndex === index ? progress : 0})` }}
+                />
+              </button>
+            ))}
           </div>
         </Box>
 

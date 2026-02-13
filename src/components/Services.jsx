@@ -1,9 +1,12 @@
+import { useEffect, useState } from 'react'
 import {
   Box,
   Container,
   Typography,
   Grid,
-  Avatar
+  Avatar,
+  useMediaQuery,
+  useTheme
 } from '@mui/material'
 import {
   Smartphone,
@@ -16,8 +19,45 @@ import {
 import { Briefcase } from 'lucide-react'
 import { Badge } from './ui/badge'
 import { Card, CardContent } from './ui/card'
+import useEmblaCarousel from 'embla-carousel-react'
+import { usePremiumCarouselAutoplay, PREMIUM_DURATION } from '../hooks/usePremiumCarouselAutoplay'
+
+const AUTOPLAY_DELAY_MS = 3000
 
 const Services = () => {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down(768))
+  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [progress, setProgress] = useState(0)
+
+  const emblaOptions = {
+    align: 'center',
+    direction: 'rtl',
+    loop: true,
+    duration: PREMIUM_DURATION,
+    slidesToScroll: 1,
+    breakpoints: { '(min-width: 769px)': { active: false } }
+  }
+  const [emblaRef, emblaApi] = useEmblaCarousel(emblaOptions, [])
+  usePremiumCarouselAutoplay(emblaApi, isMobile)
+
+  useEffect(() => {
+    if (!emblaApi) return
+    const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap())
+    onSelect()
+    emblaApi.on('select', onSelect)
+    return () => emblaApi.off('select', onSelect)
+  }, [emblaApi])
+
+  useEffect(() => {
+    if (!isMobile) return
+    const start = Date.now()
+    const t = setInterval(() => {
+      const elapsed = (Date.now() - start) % AUTOPLAY_DELAY_MS
+      setProgress(elapsed / AUTOPLAY_DELAY_MS)
+    }, 50)
+    return () => clearInterval(t)
+  }, [isMobile, selectedIndex])
   const services = [
     {
       icon: <Smartphone />,
@@ -102,36 +142,59 @@ const Services = () => {
           </Typography>
         </Box>
 
-        <div className="services-carousel">
-          {services.map((service, index) => (
-            <Card key={index} className="service-card carousel-item mobile-animate-card mobile-services-card mobile-stat-card h-full text-center p-8 border-2 border-[#e2e8f0] hover:border-[#3b82f6] max-sm:p-5 max-sm:w-full">
-                <CardContent className="p-0 h-full flex flex-col">
-                  <Avatar 
-                    className="mobile-services-icon-wrap mobile-stat-icon-circle"
-                    sx={{ 
-                      width: 90,
-                      height: 90,
-                      background: service.color,
-                      mx: 'auto',
-                      mb: 3,
-                      boxShadow: service.color === '#3b82f6' ? '0 10px 30px rgba(59, 130, 246, 0.3)' : '0 10px 30px rgba(15, 23, 42, 0.2)'
-                    }}
-                  >
-                    <Box sx={{ fontSize: 45 }}>
-                      {service.icon}
-                    </Box>
-                  </Avatar>
-                  
-                  <Typography variant="h5" gutterBottom sx={{ fontWeight: 700, mb: 2, color: '#0f172a' }} className="mobile-card-title max-sm:!text-lg">
-                    {service.title}
-                  </Typography>
-                  
-                  <Typography variant="body1" sx={{ lineHeight: 1.8, flexGrow: 1, color: '#64748b' }} className="mobile-card-desc max-sm:!text-base">
-                    {service.description}
-                  </Typography>
-                </CardContent>
-              </Card>
-          ))}
+        <div ref={emblaRef} className="services-carousel embla-premium">
+          <div className="embla-premium__container">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className={`embla-premium__slide service-card carousel-item ${selectedIndex === index ? 'is-center' : ''}`}
+              >
+                <Card className="mobile-animate-card mobile-services-card mobile-stat-card h-full text-center p-8 border-2 border-[#e2e8f0] hover:border-[#3b82f6] max-sm:p-5 max-sm:w-full">
+                  <CardContent className="p-0 h-full flex flex-col">
+                    <Avatar
+                      className="mobile-services-icon-wrap mobile-stat-icon-circle"
+                      sx={{
+                        width: 90,
+                        height: 90,
+                        background: service.color,
+                        mx: 'auto',
+                        mb: 3,
+                        boxShadow: service.color === '#3b82f6' ? '0 10px 30px rgba(59, 130, 246, 0.3)' : '0 10px 30px rgba(15, 23, 42, 0.2)'
+                      }}
+                    >
+                      <Box sx={{ fontSize: 45 }}>
+                        {service.icon}
+                      </Box>
+                    </Avatar>
+                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 700, mb: 2, color: '#0f172a' }} className="mobile-card-title max-sm:!text-lg">
+                      {service.title}
+                    </Typography>
+                    <Typography variant="body1" sx={{ lineHeight: 1.8, flexGrow: 1, color: '#64748b' }} className="mobile-card-desc max-sm:!text-base">
+                      {service.description}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </div>
+            ))}
+          </div>
+          <div className="embla-premium-dots max-sm:flex sm:hidden" role="tablist" aria-label="בחירת שירות">
+            {services.map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                role="tab"
+                aria-selected={selectedIndex === index}
+                aria-label={`שירות ${index + 1}`}
+                className="embla-premium-dot"
+                onClick={() => emblaApi?.scrollTo(index)}
+              >
+                <span
+                  className="embla-premium-dot__progress"
+                  style={{ transform: `scaleX(${selectedIndex === index ? progress : 0})` }}
+                />
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Benefits Bar */}
